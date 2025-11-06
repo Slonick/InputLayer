@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using InputLayer.Common.Extensions;
 using InputLayer.Common.Logging.Layouts;
 
@@ -39,11 +40,64 @@ namespace InputLayer.Common.Logging
 
         public IDictionary<string, ILogLayout> GetLogLayouts()
         {
-            return _logLayoutsCache ?? (_logLayoutsCache = AppDomain.CurrentDomain.GetAssemblies()
-                                                                    .SelectMany(x => x.GetTypes())
-                                                                    .Where(x => typeof(ILogLayout).IsAssignableFrom(x) && !x.IsInterface && !x.IsAbstract)
-                                                                    .Select(Activator.CreateInstance).OfType<ILogLayout>()
-                                                                    .ToDictionary(x => x.GetType().GetAttributeOfType<LogLayoutAttribute>().Name, x => x));
+            if (_logLayoutsCache != null)
+            {
+                return _logLayoutsCache;
+            }
+
+            var safeAssemblies = AppDomain.CurrentDomain.GetAssemblies()
+                                          .Where(a => !a.IsDynamic && a.FullName.StartsWith(nameof(InputLayer)));
+
+            var layouts = new List<ILogLayout>();
+
+            foreach (var assembly in safeAssemblies)
+            {
+                try
+                {
+                    var types = assembly.GetTypes()
+                                        .Where(x => typeof(ILogLayout).IsAssignableFrom(x) &&
+                                                    !x.IsInterface &&
+                                                    !x.IsAbstract);
+
+                    foreach (var type in types)
+                    {
+                        try
+                        {
+                            var instance = (ILogLayout)Activator.CreateInstance(type);
+                            layouts.Add(instance);
+                        }
+                        catch
+                        {
+                            // ignored
+                        }
+                    }
+                }
+                catch (ReflectionTypeLoadException ex)
+                {
+                    var loadedTypes = ex.Types.Where(t => t != null &&
+                                                          typeof(ILogLayout).IsAssignableFrom(t) &&
+                                                          !t.IsInterface &&
+                                                          !t.IsAbstract);
+                    foreach (var type in loadedTypes)
+                    {
+                        try
+                        {
+                            var instance = (ILogLayout)Activator.CreateInstance(type);
+                            layouts.Add(instance);
+                        }
+                        catch
+                        {
+                            // ignored
+                        }
+                    }
+                }
+            }
+
+            _logLayoutsCache = layouts.ToDictionary(
+                                                    x => x.GetType().GetAttributeOfType<LogLayoutAttribute>().Name,
+                                                    x => x);
+
+            return _logLayoutsCache;
         }
 
         private ILogger GetLoggerThreadSafe(string name, Type loggerType)
