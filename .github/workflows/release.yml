@@ -75,3 +75,11 @@ jobs:
           files: InputLayer.pext
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  cleanup:
+    runs-on: windows-latest
+    needs: compress
+    if: always()
+    steps:
+      - uses: geekyeggo/delete-artifact@v5
+        with:
+          name: plugin-build
