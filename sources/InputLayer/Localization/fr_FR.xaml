@@ -1,0 +1,197 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="LOCInputLayerSelectButton">
+        Sélectionnez le bouton principal de la manette pour les actions
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGuideWarning">
+        Remarque : Le bouton Guide peut ne pas toujours être détecté. Veuillez tester s'il fonctionne avec votre manette.
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLogTitle">
+        Test de saisie des boutons de la manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLogButtonPressed">
+        Bouton de manette pressé :
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerActionsTitle">
+        Actions de la manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerActionsHint">
+        Configurez les combinaisons de boutons de la manette pour déclencher des actions dans différents modes.
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerAddControllerAction">
+        Ajouter une action de manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRemoveControllerActionHint">
+        Supprimer l'action de manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerAddControllerActionItemHint">
+        Ajouter une action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRemoveControllerActionItemHint">
+        Supprimer l'action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerUpControllerActionItemHint">
+        Déplacer l'action vers le haut
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerDownControllerActionItemHint">
+        Déplacer l'action vers le bas
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerControllerActionItemsHint">
+        Les actions seront exécutées dans l'ordre de haut en bas
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerDesktopTab">
+        Bureau
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerFullscreenTab">
+        Plein écran
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerInGameTab">
+        En jeu
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerButtonPlaceholder">
+        Sélectionner un bouton
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandAction">
+        Commande
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandActionDescription">
+        Exécuter une commande shell
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandActionPlaceholder">
+        Saisir une commande
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandAction">
+        Commande PowerShell
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandActionDescription">
+        Exécuter une commande PowerShell
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandActionPlaceholder">
+        Saisir une commande
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableAction">
+        Exécutable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionDescription">
+        Lancer un fichier exécutable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableToggleVisibilityDescription">
+        Basculer la visibilité de la fenêtre lors de l'exécution
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionSelect">
+        Sélectionner
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionPlaceholder">
+        Sélectionner un exécutable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardAction">
+        Raccourci clavier
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardActionDescription">
+        Simuler un raccourci clavier
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardActionPlaceholder">
+        Appuyer sur un raccourci
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteAction">
+        Playnite
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteActionDescription">
+        Actions Playnite
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteActionPlaceholder">
+        Sélectionner une action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerToggleFullscreenPlayniteAction">
+        Basculer en mode plein écran
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerToggleFullscreenPlayniteActionDescription">
+        Afficher Playnite si masqué, sinon basculer en mode plein écran
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToFullscreenPlayniteAction">
+        Passer en mode plein écran
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToFullscreenPlayniteActionDescription">
+        Passer en mode plein écran
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToDesktopPlayniteAction">
+        Passer en mode bureau
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToDesktopPlayniteActionDescription">
+        Passer en mode bureau
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerControllerAction">
+        Manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRumbleControllerAction">
+        Vibration
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLongPress">
+        Appui long
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerNoButtonSelectedError">
+        Veuillez sélectionner un bouton de la manette
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyCommandError">
+        La commande ne peut pas être vide
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyExecutableFilepathError">
+        Veuillez sélectionner un fichier exécutable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyExecutableFileNotExistError">
+        Le fichier exécutable sélectionné n'existe pas
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyHotkeyError">
+        Veuillez configurer un raccourci
+    </system:String>
+
+</ResourceDictionary>

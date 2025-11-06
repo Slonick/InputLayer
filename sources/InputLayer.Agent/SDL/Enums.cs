@@ -1,0 +1,78 @@
+﻿// ReSharper disable All
+
+namespace InputLayer.Agent
+{
+    #region SDL_bool
+
+    public enum SDL_bool
+    {
+        SDL_FALSE = 0,
+        SDL_TRUE = 1
+    }
+
+    #endregion
+
+    #region SDL_EventType
+
+    public enum SDL_EventType : uint
+    {
+        SDL_FIRSTEVENT = 0,
+        SDL_QUIT = 0x100,
+        SDL_CONTROLLERAXISMOTION = 0x650,
+        SDL_CONTROLLERBUTTONDOWN,
+        SDL_CONTROLLERBUTTONUP,
+        SDL_CONTROLLERDEVICEADDED,
+        SDL_CONTROLLERDEVICEREMOVED,
+        SDL_CONTROLLERDEVICEREMAPPED,
+        SDL_LASTEVENT = 0xFFFF
+    }
+
+    #endregion
+
+    #region SDL_GameControllerAxis
+
+    public enum SDL_GameControllerAxis
+    {
+        SDL_CONTROLLER_AXIS_INVALID = -1,
+        SDL_CONTROLLER_AXIS_LEFTX,
+        SDL_CONTROLLER_AXIS_LEFTY,
+        SDL_CONTROLLER_AXIS_RIGHTX,
+        SDL_CONTROLLER_AXIS_RIGHTY,
+        SDL_CONTROLLER_AXIS_TRIGGERLEFT,
+        SDL_CONTROLLER_AXIS_TRIGGERRIGHT,
+        SDL_CONTROLLER_AXIS_MAX
+    }
+
+    #endregion
+
+    #region SDL_GameControllerButton
+
+    public enum SDL_GameControllerButton
+    {
+        SDL_CONTROLLER_BUTTON_INVALID = -1,
+        SDL_CONTROLLER_BUTTON_A,
+        SDL_CONTROLLER_BUTTON_B,
+        SDL_CONTROLLER_BUTTON_X,
+        SDL_CONTROLLER_BUTTON_Y,
+        SDL_CONTROLLER_BUTTON_BACK,
+        SDL_CONTROLLER_BUTTON_GUIDE,
+        SDL_CONTROLLER_BUTTON_START,
+        SDL_CONTROLLER_BUTTON_LEFTSTICK,
+        SDL_CONTROLLER_BUTTON_RIGHTSTICK,
+        SDL_CONTROLLER_BUTTON_LEFTSHOULDER,
+        SDL_CONTROLLER_BUTTON_RIGHTSHOULDER,
+        SDL_CONTROLLER_BUTTON_DPAD_UP,
+        SDL_CONTROLLER_BUTTON_DPAD_DOWN,
+        SDL_CONTROLLER_BUTTON_DPAD_LEFT,
+        SDL_CONTROLLER_BUTTON_DPAD_RIGHT,
+        SDL_CONTROLLER_BUTTON_MISC1,
+        SDL_CONTROLLER_BUTTON_PADDLE1,
+        SDL_CONTROLLER_BUTTON_PADDLE2,
+        SDL_CONTROLLER_BUTTON_PADDLE3,
+        SDL_CONTROLLER_BUTTON_PADDLE4,
+        SDL_CONTROLLER_BUTTON_TOUCHPAD,
+        SDL_CONTROLLER_BUTTON_MAX
+    }
+
+    #endregion
+}

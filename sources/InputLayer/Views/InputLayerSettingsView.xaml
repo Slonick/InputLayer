@@ -1,0 +1,345 @@
+﻿<UserControl x:Class="InputLayer.Views.InputLayerSettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:controls="clr-namespace:InputLayer.Controls"
+             xmlns:converters="clr-namespace:InputLayer.Converters"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:helpers="clr-namespace:InputLayer.Helpers"
+             xmlns:infrastructures="clr-namespace:InputLayer.Infrastructures"
+             xmlns:infrastructuresCommon="clr-namespace:InputLayer.Common.Infrastructures;assembly=InputLayer.Common"
+             xmlns:markupExtensions="clr-namespace:InputLayer.MarkupExtensions"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:models="clr-namespace:InputLayer.Models"
+             xmlns:viewModels="clr-namespace:InputLayer.ViewModels"
+             xmlns:views="clr-namespace:InputLayer.Views"
+             x:Name="InputLayerSettingsViewControl"
+             d:DataContext="{d:DesignInstance viewModels:InputLayerSettingsViewModel}"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Geometry x:Key="AddGeometry">
+            F1 M32,32z M0,0z M17,28L17,28 15,28 15,17 4,17 4,15 15,15 15,4 17,4 17,15 28,15 28,17 17,17z
+        </Geometry>
+
+        <Geometry x:Key="TrashGeometry">
+            F1 M32,32z M0,0z M22.269,30L7.731,30C5.674,30,4,28.326,4,26.269L4,8 2,8 2,6 10,6 10,4.365C10,3.061,11.061,2,12.365,2L17.634,2C18.939,2,20,3.061,20,4.365L20,6 27.8,6 27.8,8 26,8 26,26.269C26,28.326,24.326,30,22.269,30z M6,8L6,26.269C6,27.223,6.776,28,7.731,28L22.269,28C23.223,28,24,27.224,24,26.269L24,8 6,8z M12,6L18,6 18,4.365C18,4.163,17.836,4,17.635,4L12.366,4C12.165,4,12.001,4.164,12.001,4.365L12.001,6z M20,24L18,24 18,12 20,12 20,24z M16,24L14,24 14,12 16,12 16,24z M12,24L10,24 10,12 12,12 12,24z
+        </Geometry>
+
+        <Geometry x:Key="UpGeometry">F1 M32,32z M0,0z M7.998,32L8,20 -0.101,20 16,0.144 32.101,20 24.001,20 24,31.998 7.998,32z M4.095,18L10,18 9.998,30 22,29.998 22.002,18 27.905,18 16,3.319 4.095,18z</Geometry>
+
+        <Geometry x:Key="DownGeometry">F1 M32,32z M0,0z M16,31.861L-0.098,12 8.001,12 8,-0.002 23.998,0 24,12 32.098,12 16,31.861z M4.098,14L16,28.685 27.902,14 22,14 21.998,2 10,1.998 10.002,14 4.098,14z</Geometry>
+
+    </UserControl.Resources>
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="150" />
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+
+            <TextBlock Margin="0,0,0,10"
+                       FontWeight="Bold"
+                       Text="{DynamicResource LOCInputLayerSelectButton}" />
+
+            <ComboBox Margin="0,0,0,5"
+                      ItemsSource="{Binding Source={x:Static helpers:ControllerButtonHelper.MainButtons}}"
+                      SelectedValue="{Binding Settings.MainButton, Mode=TwoWay}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type infrastructuresCommon:ControllerInput}">
+                        <TextBlock Text="{Binding Path=., Converter={converters:ControllerButtonToStringConverter}}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+
+            <TextBlock Margin="0,0,0,15"
+                       FontSize="12"
+                       Foreground="{DynamicResource TextBrushDarker}"
+                       Text="{DynamicResource LOCInputLayerGuideWarning}" />
+
+        </StackPanel>
+
+        <GroupBox Grid.Row="1"
+                  Margin="0,15,0,0"
+                  Header="{DynamicResource LOCInputLayerActionsTitle}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0"
+                           Margin="0,0,0,15"
+                           FontSize="12"
+                           Foreground="{DynamicResource TextBrushDarker}"
+                           TextWrapping="Wrap">
+                    <Run Text="{DynamicResource LOCInputLayerActionsHint}" />
+                    <LineBreak />
+                    <Run Text="{DynamicResource LOCInputLayerControllerActionItemsHint}" />
+                </TextBlock>
+
+                <TabControl Grid.Row="1"
+                            ItemsSource="{Binding Converter={converters:EnumToSourceConverter}, Source={x:Type infrastructures:ActionTab}}"
+                            SelectedItem="{Binding ActionTab}">
+                    <TabControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type infrastructures:ActionTab}">
+                            <TextBlock Text="{markupExtensions:LocalizationBinding Path=., StringFormat={}LOCInputLayer{0}Tab}" />
+                        </DataTemplate>
+                    </TabControl.ItemTemplate>
+                    <TabControl.ContentTemplate>
+                        <DataTemplate DataType="{x:Type infrastructures:ActionTab}" />
+                    </TabControl.ContentTemplate>
+                </TabControl>
+
+                <Grid Grid.Row="2" Margin="0,15,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+
+                    <ScrollViewer Grid.Row="0"
+                                  HorizontalScrollBarVisibility="Hidden"
+                                  VerticalScrollBarVisibility="Auto">
+                        <ItemsControl x:Name="ControllerActions" ItemsSource="{Binding SelectedControllerActions}">
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate DataType="{x:Type models:ControllerAction}">
+
+                                    <controls:GridWithGap x:Name="ControllerActionRoot"
+                                                          Margin="0,0,0,10"
+                                                          ColumnGap="10"
+                                                          IsEnabled="{Binding IsPredefined, Converter={converters:InvertBooleanConverter}}">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="300" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <controls:GridWithGap ColumnGap="10">
+
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <ComboBox x:Name="ButtonComboBox"
+                                                      Grid.Column="0"
+                                                      MinHeight="28"
+                                                      VerticalAlignment="Top"
+                                                      SelectedValue="{Binding Button, Mode=TwoWay}">
+                                                <ComboBox.ItemsSource>
+                                                    <MultiBinding Converter="{converters:AvailableControllerButtonsConverter}">
+                                                        <Binding Source="{x:Static helpers:ControllerButtonHelper.All}" />
+                                                        <Binding ElementName="ControllerActions" />
+                                                        <Binding RelativeSource="{RelativeSource Self}" />
+                                                        <Binding ElementName="InputLayerSettingsViewControl" Path="DataContext.SelectedControllerActions" />
+                                                        <Binding Path="IsDropDownOpen" RelativeSource="{RelativeSource Self}" />
+                                                    </MultiBinding>
+                                                </ComboBox.ItemsSource>
+
+                                                <ComboBox.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type infrastructuresCommon:ControllerInput}">
+                                                        <TextBlock>
+                                                            <TextBlock.Text>
+                                                                <MultiBinding Converter="{converters:ControllerButtonsToStringConverter}">
+                                                                    <Binding ElementName="InputLayerSettingsViewControl" Path="DataContext.Settings.MainButton" />
+                                                                    <Binding />
+                                                                </MultiBinding>
+                                                            </TextBlock.Text>
+                                                        </TextBlock>
+                                                    </DataTemplate>
+                                                </ComboBox.ItemTemplate>
+
+                                            </ComboBox>
+
+                                            <TextBlock Grid.Column="0"
+                                                       MinHeight="28"
+                                                       Margin="6,6,0,0"
+                                                       VerticalAlignment="Top"
+                                                       Focusable="False"
+                                                       FontFamily="{Binding FontFamily, ElementName=ButtonComboBox}"
+                                                       FontSize="{Binding FontSize, ElementName=ButtonComboBox}"
+                                                       FontStyle="Italic"
+                                                       Foreground="{Binding Foreground, ElementName=ButtonComboBox}"
+                                                       IsHitTestVisible="False"
+                                                       Opacity="0.3"
+                                                       Text="{DynamicResource LOCInputLayerButtonPlaceholder}"
+                                                       Visibility="{Binding Button, Converter={converters:ControllerButtonToVisibilityInvertedConverter}}" />
+
+                                            <controls:StackPanelWithGap Grid.Column="1"
+                                                                        MinHeight="28"
+                                                                        VerticalAlignment="Top"
+                                                                        Gap="10"
+                                                                        Orientation="Horizontal">
+                                                <Button Command="{Binding DataContext.RemoveControllerActionCommand, ElementName=InputLayerSettingsViewControl}"
+                                                        CommandParameter="{Binding}"
+                                                        Cursor="Hand"
+                                                        ToolTip="{DynamicResource LOCInputLayerRemoveControllerActionHint}">
+
+                                                    <Path Width="16"
+                                                          Height="16"
+                                                          Data="{StaticResource TrashGeometry}"
+                                                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                          Stretch="Uniform" />
+
+                                                </Button>
+                                            </controls:StackPanelWithGap>
+
+                                        </controls:GridWithGap>
+
+                                        <ScrollViewer Grid.Column="1"
+                                                      HorizontalScrollBarVisibility="Hidden"
+                                                      VerticalScrollBarVisibility="Auto">
+                                            <ItemsControl ItemsSource="{Binding Actions}">
+                                                <ItemsControl.ItemsPanel>
+                                                    <ItemsPanelTemplate>
+                                                        <controls:StackPanelWithGap Gap="10" Orientation="Vertical" />
+                                                    </ItemsPanelTemplate>
+                                                </ItemsControl.ItemsPanel>
+                                                <ItemsControl.ItemTemplate>
+                                                    <DataTemplate DataType="{x:Type models:ControllerActionItem}">
+
+                                                        <controls:GridWithGap ColumnGap="10">
+
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="200" />
+                                                                <ColumnDefinition Width="*" />
+                                                                <ColumnDefinition Width="Auto" />
+                                                            </Grid.ColumnDefinitions>
+
+                                                            <ComboBox Grid.Column="0"
+                                                                      MinHeight="28"
+                                                                      VerticalAlignment="Top"
+                                                                      ItemsSource="{Binding Source={x:Type infrastructures:ActionType}, Converter={converters:EnumToSourceConverter}}"
+                                                                      SelectedValue="{Binding ActionType, Mode=TwoWay}">
+
+                                                                <ComboBox.ItemTemplate>
+                                                                    <DataTemplate DataType="{x:Type infrastructures:ActionType}">
+                                                                        <TextBlock Text="{markupExtensions:LocalizationBinding Path=., StringFormat={}LOCInputLayer{0}Action}" ToolTip="{markupExtensions:LocalizationBinding Path=., StringFormat={}LOCInputLayer{0}ActionDescription}" />
+
+                                                                    </DataTemplate>
+                                                                </ComboBox.ItemTemplate>
+
+                                                            </ComboBox>
+
+                                                            <views:ActionView Grid.Column="1" DataContext="{Binding Action}" />
+
+                                                            <controls:StackPanelWithGap Grid.Column="2"
+                                                                                        MinHeight="28"
+                                                                                        VerticalAlignment="Top"
+                                                                                        Gap="10"
+                                                                                        Orientation="Horizontal">
+
+                                                                <Button Command="{Binding DataContext.AddControllerActionItemCommand, ElementName=ControllerActionRoot}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Cursor="Hand"
+                                                                        ToolTip="{DynamicResource LOCInputLayerAddControllerActionItemHint}">
+
+                                                                    <Path Width="16"
+                                                                          Height="16"
+                                                                          Data="{StaticResource AddGeometry}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                                          Stretch="Uniform" />
+
+                                                                </Button>
+
+                                                                <Button Command="{Binding DataContext.RemoveControllerActionItemCommand, ElementName=ControllerActionRoot}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Cursor="Hand"
+                                                                        ToolTip="{DynamicResource LOCInputLayerRemoveControllerActionItemHint}">
+
+                                                                    <Path Width="16"
+                                                                          Height="16"
+                                                                          Data="{StaticResource TrashGeometry}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                                          Stretch="Uniform" />
+
+                                                                </Button>
+
+                                                                <Button Command="{Binding DataContext.UpControllerActionItemCommand, ElementName=ControllerActionRoot}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Cursor="Hand"
+                                                                        ToolTip="{DynamicResource LOCInputLayerUpControllerActionItemHint}">
+
+                                                                    <Path Width="16"
+                                                                          Height="16"
+                                                                          Data="{StaticResource UpGeometry}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                                          Stretch="Uniform" />
+
+                                                                </Button>
+
+                                                                <Button Command="{Binding DataContext.DownControllerActionItemCommand, ElementName=ControllerActionRoot}"
+                                                                        CommandParameter="{Binding}"
+                                                                        Cursor="Hand"
+                                                                        ToolTip="{DynamicResource LOCInputLayerDownControllerActionItemHint}">
+
+                                                                    <Path Width="16"
+                                                                          Height="16"
+                                                                          Data="{StaticResource DownGeometry}"
+                                                                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                                                          Stretch="Uniform" />
+
+                                                                </Button>
+
+                                                            </controls:StackPanelWithGap>
+
+                                                        </controls:GridWithGap>
+
+                                                    </DataTemplate>
+                                                </ItemsControl.ItemTemplate>
+                                            </ItemsControl>
+                                        </ScrollViewer>
+
+                                    </controls:GridWithGap>
+
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </ScrollViewer>
+
+                    <StackPanel Grid.Row="1"
+                                Margin="0,15,0,0"
+                                HorizontalAlignment="Right"
+                                Orientation="Horizontal">
+                        <Button Command="{Binding AddControllerActionCommand}" Cursor="Hand">
+                            <controls:GridWithGap ColumnGap="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+
+                                <Path Grid.Column="0"
+                                      Width="16"
+                                      Height="16"
+                                      Data="{StaticResource AddGeometry}"
+                                      Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}"
+                                      Stretch="Uniform" />
+
+                                <TextBlock Grid.Column="1" Text="{DynamicResource LOCInputLayerAddControllerAction}" />
+                            </controls:GridWithGap>
+                        </Button>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2"
+                  Margin="0,15,0,0"
+                  Header="{DynamicResource LOCInputLayerLogTitle}">
+            <ListBox Padding="5"
+                     ItemsSource="{Binding ButtonLogs}"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock>
+                            <Run Foreground="{DynamicResource TextBrushDarker}" Text="{DynamicResource LOCInputLayerLogButtonPressed}" />
+                            <Run Text="{Binding Path=., Converter={converters:ControllerButtonToStringConverter}}" />
+                        </TextBlock>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </GroupBox>
+    </Grid>
+</UserControl>

@@ -1,0 +1,197 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <system:String x:Key="LOCInputLayerSelectButton">
+        Select the main controller button for actions
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGuideWarning">
+        Note: The Guide button may not always be detected. Please test if it works with your controller.
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLogTitle">
+        Controller Button Input Test
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLogButtonPressed">
+        Controller button pressed:
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerActionsTitle">
+        Controller Actions
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerActionsHint">
+        Configure controller button combinations to trigger actions in different modes.
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerAddControllerAction">
+        Add Controller Action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRemoveControllerActionHint">
+        Remove Controller Action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerAddControllerActionItemHint">
+        Add Action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRemoveControllerActionItemHint">
+        Remove Action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerUpControllerActionItemHint">
+        Move Action Up
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerDownControllerActionItemHint">
+        Move Action Down
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerControllerActionItemsHint">
+        Actions will be executed in order from top to bottom
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerDesktopTab">
+        Desktop
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerFullscreenTab">
+        Fullscreen
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerInGameTab">
+        In-Game
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerButtonPlaceholder">
+        Select button
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandAction">
+        Command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandActionDescription">
+        Execute a shell command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerCommandActionPlaceholder">
+        Enter command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandAction">
+        PowerShell Command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandActionDescription">
+        Execute a PowerShell command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPowerShellCommandActionPlaceholder">
+        Enter command
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableAction">
+        Executable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionDescription">
+        Launch an executable file
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableToggleVisibilityDescription">
+        Toggle window visibility when executing
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionSelect">
+        Select
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerExecutableActionPlaceholder">
+        Select executable
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardAction">
+        Keyboard Shortcut
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardActionDescription">
+        Simulate keyboard shortcut
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerKeyboardActionPlaceholder">
+        Press hotkey
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteAction">
+        Playnite
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteActionDescription">
+        Playnite actions
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerPlayniteActionPlaceholder">
+        Select action
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerToggleFullscreenPlayniteAction">
+        Toggle Fullscreen Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerToggleFullscreenPlayniteActionDescription">
+        Show Playnite if hidden, otherwise switch to Fullscreen Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToFullscreenPlayniteAction">
+        Switch to Fullscreen Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToFullscreenPlayniteActionDescription">
+        Switch to Fullscreen Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToDesktopPlayniteAction">
+        Switch to Desktop Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerGoToDesktopPlayniteActionDescription">
+        Switch to Desktop Mode
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerControllerAction">
+        Controller
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerRumbleControllerAction">
+        Rumble
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerLongPress">
+        Long Press
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerNoButtonSelectedError">
+        Please select a controller button
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyCommandError">
+        Command cannot be empty
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyExecutableFilepathError">
+        Please select an executable file
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyExecutableFileNotExistError">
+        The selected executable file does not exist
+    </system:String>
+
+    <system:String x:Key="LOCInputLayerEmptyHotkeyError">
+        Please configure a hotkey
+    </system:String>
+
+</ResourceDictionary>

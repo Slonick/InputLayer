@@ -1,0 +1,100 @@
+﻿name: Build InputLayer (Beta)
+on:
+  release:
+    types: [ prereleased ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: microsoft/setup-msbuild@v2
+
+      - uses: NuGet/setup-nuget@v2
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ runner.os }}-${{ hashFiles('**/packages.config', '**/*.csproj') }}
+          restore-keys: |
+            nuget-${{ runner.os }}-
+
+      - name: Restore NuGet packages
+        run: nuget restore sources/InputLayer.sln
+
+      - name: Build (Release)
+        run: msbuild sources/InputLayer.sln /p:Configuration=Release /p:Platform="Any CPU" /p:OutputPath=publish\ /m
+
+      - name: Clean up SDK files
+        shell: pwsh
+        run: |
+          Remove-Item publish\Playnite.* -Force -ErrorAction SilentlyContinue
+          Remove-Item publish\*.pdb -Force -ErrorAction SilentlyContinue
+          Remove-Item publish\*.xml -Force -ErrorAction SilentlyContinue
+
+      - name: Upload publish artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: plugin-build
+          path: publish/**
+          retention-days: 30
+
+  compress:
+    runs-on: windows-latest
+    needs: build
+    outputs:
+      filename: ${{ steps.vars.outputs.filename }}
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: plugin-build
+          path: dist
+
+      - name: Generate version info
+        id: vars
+        shell: pwsh
+        run: |
+          $sha = "${{ github.sha }}"
+          $sha_short = $sha.Substring(0,7)
+          $filename = "InputLayer-beta-$sha_short.pext"
+          echo "sha_short=$sha_short" >> $env:GITHUB_OUTPUT
+          echo "filename=$filename" >> $env:GITHUB_OUTPUT
+          echo "Building: $filename"
+
+      - name: Compress to .pext
+        shell: pwsh
+        run: |
+          $filename = "${{ steps.vars.outputs.filename }}"
+          Compress-Archive -Path dist\* -DestinationPath $filename -CompressionLevel Optimal
+
+      - name: Upload compressed .pext artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: InputLayer-pext
+          path: ${{ steps.vars.outputs.filename }}
+          retention-days: 90
+
+  upload:
+    runs-on: windows-latest
+    needs: compress
+    if: github.event_name == 'release'
+    permissions:
+      contents: write
+    steps:
+      - name: Download .pext artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: InputLayer-pext
+          path: .
+
+      - name: Upload .pext to Pre-Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: InputLayer-beta-*.pext
+          prerelease: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

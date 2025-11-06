@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{C8A4AED6-8D41-4A62-A0D9-02E048EBBA1F}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>InputLayer</RootNamespace>
+        <AssemblyName>InputLayer</AssemblyName>
+        <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+        <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\InputLayer.Agent\InputLayer.Agent.csproj">
+            <Project>{bb63ee2c-9449-435b-810c-4f477ad4ee7f}</Project>
+            <Name>InputLayer.Agent</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\InputLayer.Common\InputLayer.Common.csproj">
+            <Project>{28a41b04-78a8-4d5c-bf78-ec1addf5afb1}</Project>
+            <Name>InputLayer.Common</Name>
+            <Private>True</Private>
+        </ProjectReference>
+        <ProjectReference Include="..\InputLayer.IPC\InputLayer.IPC.csproj">
+            <Project>{80e5e424-8bd7-48a3-a694-08c9395a7927}</Project>
+            <Name>InputLayer.IPC</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\InputLayer.Keyboard\InputLayer.Keyboard.csproj">
+            <Project>{22636ae7-6d33-4c0d-a835-8e0e871a3f42}</Project>
+            <Name>InputLayer.Keyboard</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <ItemGroup>
+        <Reference Include="PresentationCore"/>
+        <Reference Include="PresentationFramework"/>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Xaml"/>
+        <Reference Include="WindowsBase"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="AttachedProperties\HotKeyTextBoxBehavior.cs"/>
+        <Compile Include="Bootstrapper.cs"/>
+        <Compile Include="Controls\GridWithGap.cs"/>
+        <Compile Include="Controls\StackPanelWithGap.cs"/>
+        <Compile Include="Converters\AvailableControllerButtonsConverter.cs"/>
+        <Compile Include="Converters\Base\MarkupMultiValueConverter.cs"/>
+        <Compile Include="Converters\Base\MarkupValueConverter.cs"/>
+        <Compile Include="Converters\BooleanToGeometryConverter.cs"/>
+        <Compile Include="Converters\ControllerButtonsToStringConverter.cs"/>
+        <Compile Include="Converters\ControllerButtonToStringConverter.cs"/>
+        <Compile Include="Converters\ControllerButtonToVisibilityInvertedConverter.cs"/>
+        <Compile Include="Converters\EnumToSourceConverter.cs"/>
+        <Compile Include="Converters\InvertBooleanConverter.cs"/>
+        <Compile Include="Converters\KeyboardActionToTextConverter.cs"/>
+        <Compile Include="Converters\PathToFileNameConverter.cs"/>
+        <Compile Include="Converters\PlaceholderVisibilityConverter.cs"/>
+        <Compile Include="Helpers\ControllerButtonHelper.cs"/>
+        <Compile Include="Helpers\UIHelper.cs"/>
+        <Compile Include="Infrastructures\ActionTab.cs"/>
+        <Compile Include="Infrastructures\ActionType.cs"/>
+        <Compile Include="InputLayerPlugin.cs"/>
+        <Compile Include="MarkupExtensions\LocalizationBinding.cs"/>
+        <Compile Include="Converters\LocalizationConverter.cs"/>
+        <Compile Include="Models\ControllerAction.cs"/>
+        <Compile Include="Models\ControllerActionItem.cs"/>
+        <Compile Include="Models\InputLayerSettings.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Services\ControllerService.cs"/>
+        <Compile Include="Services\SettingsService.cs"/>
+        <Compile Include="Utils\UIDispatcher.cs"/>
+        <Compile Include="ViewModels\InputLayerSettingsViewModel.cs"/>
+        <Compile Include="Views\ActionView.xaml.cs">
+            <DependentUpon>ActionView.xaml</DependentUpon>
+        </Compile>
+        <Compile Include="Views\InputLayerSettingsView.xaml.cs">
+            <DependentUpon>InputLayerSettingsView.xaml</DependentUpon>
+        </Compile>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="extension.yaml">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="icon.png">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="StartButtonLauncher.yaml"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Page Include="App.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <Page Include="Views\ActionView.xaml">
+            <SubType>Designer</SubType>
+            <Generator>MSBuild:Compile</Generator>
+        </Page>
+        <Page Include="Views\InputLayerSettingsView.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+        </Page>
+        <None Include="Localization\*.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Include="Resources\*.xaml">
+            <Generator>MSBuild:Compile</Generator>
+            <SubType>Designer</SubType>
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="PlayniteSDK" Version="6.13.0"/>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+             Other similar extension points exist, see Microsoft.Common.targets.
+        <Target Name="BeforeBuild">
+        </Target>
+        <Target Name="AfterBuild">
+        </Target>
+        -->
+</Project>
