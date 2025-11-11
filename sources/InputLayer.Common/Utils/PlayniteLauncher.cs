@@ -44,8 +44,6 @@ namespace InputLayer.Common.Utils
         {
             try
             {
-                _logger.Info("Launching Playnite in fullscreen mode.");
-
                 var playniteExe = Path.Combine(API.Instance.Paths.ApplicationPath, "Playnite.DesktopApp.exe");
 
                 if (!File.Exists(playniteExe))

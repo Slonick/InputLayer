@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="Localization/en_US.xaml" />
+        <ResourceDictionary Source="Icons/Geometries.xaml" />
+        <ResourceDictionary Source="Styles/HeaderedContentControl.xaml" />
+        <ResourceDictionary Source="Styles/PlaceholderControl.xaml" />
+        <ResourceDictionary Source="Templates/ActionTemplates.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

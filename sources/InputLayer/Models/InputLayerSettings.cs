@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using InputLayer.Common.Infrastructures;
 using InputLayer.Common.Models.Actions;
-using InputLayer.Infrastructures;
 using InputLayer.Keyboard;
 using Playnite.SDK;
 
@@ -12,6 +11,7 @@ namespace InputLayer.Models
 {
     public class InputLayerSettings : ObservableObject
     {
+        private ControllerInputDisplayMode _displayMode;
         private ControllerInput _mainButton;
 
         public static InputLayerSettings Default { get; } = new InputLayerSettings
@@ -31,7 +31,7 @@ namespace InputLayer.Models
                             ActionType = ActionType.Playnite,
                             Action = new PlayniteAction
                             {
-                                ActionType = PlayniteActionType.ToggleFullscreen,
+                                ActionType = PlayniteActionType.ToggleFullscreen
                             }
                         }
                     }
@@ -42,6 +42,12 @@ namespace InputLayer.Models
         };
 
         public ObservableCollection<ControllerAction> DesktopActions { get; set; }
+
+        public ControllerInputDisplayMode DisplayMode
+        {
+            get => _displayMode;
+            set => this.SetValue(ref _displayMode, value);
+        }
 
         public ObservableCollection<ControllerAction> FullScreenActions { get; set; }
 
@@ -62,7 +68,13 @@ namespace InputLayer.Models
             {
                 if (controllerAction.Button == ControllerInput.None)
                 {
-                    errors.Add(ResourceProvider.GetString("LOCInputLayerNoButtonSelectedError"));
+                    errors.Add(ResourceProvider.GetString("InputLayer.Error.NoButtonSelected"));
+                    return;
+                }
+
+                if (controllerAction.Button == this.MainButton && !controllerAction.IsPredefined)
+                {
+                    errors.Add(ResourceProvider.GetString("InputLayer.Error.UnallowedButtonSelected"));
                     return;
                 }
 
@@ -73,7 +85,7 @@ namespace InputLayer.Models
                         case CommandAction commandAction:
                             if (string.IsNullOrWhiteSpace(commandAction.Command))
                             {
-                                errors.Add(ResourceProvider.GetString("LOCInputLayerEmptyCommandError"));
+                                errors.Add(ResourceProvider.GetString("InputLayer.Error.EmptyCommand"));
                                 return;
                             }
 
@@ -81,13 +93,13 @@ namespace InputLayer.Models
                         case ExecutableAction executableAction:
                             if (string.IsNullOrWhiteSpace(executableAction.FileName))
                             {
-                                errors.Add(ResourceProvider.GetString("LOCInputLayerEmptyExecutableFilepathError"));
+                                errors.Add(ResourceProvider.GetString("InputLayer.Error.EmptyExecutableFilepath"));
                                 return;
                             }
 
                             if (!File.Exists(executableAction.FileName))
                             {
-                                errors.Add(ResourceProvider.GetString("LOCInputLayerEmptyExecutableFileNotExistError"));
+                                errors.Add(ResourceProvider.GetString("InputLayer.Error.ExecutableFileNotExist"));
                                 return;
                             }
 
@@ -95,7 +107,7 @@ namespace InputLayer.Models
                         case KeyboardAction keyboardAction:
                             if (keyboardAction.Key == Keys.None)
                             {
-                                errors.Add(ResourceProvider.GetString("LOCInputLayerEmptyHotkeyError"));
+                                errors.Add(ResourceProvider.GetString("InputLayer.Error.EmptyHotkey"));
                                 return;
                             }
 

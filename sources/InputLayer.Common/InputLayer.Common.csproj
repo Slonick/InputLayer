@@ -35,13 +35,17 @@
     <ItemGroup>
         <Compile Include="Constants\PathConstants.cs"/>
         <Compile Include="Constants\PlayniteConstants.cs"/>
-        <Compile Include="Extensions\AssemblyExtension.cs"/>
+        <Compile Include="Extensions\AssemblyExtensions.cs" />
         <Compile Include="Extensions\ControllerButtonExtensions.cs"/>
         <Compile Include="Extensions\StringBuilderExtensions.cs"/>
+        <Compile Include="Extensions\StringExtensions.cs" />
+        <Compile Include="Infrastructures\ActionType.cs"/>
         <Compile Include="Infrastructures\ControllerButtonMode.cs"/>
         <Compile Include="Infrastructures\ControllerInput.cs"/>
+        <Compile Include="Infrastructures\ControllerInputDisplayMode.cs" />
         <Compile Include="Infrastructures\ControllerInputState.cs"/>
         <Compile Include="Infrastructures\PlayniteActionType.cs"/>
+        <Compile Include="Infrastructures\SystemActionType.cs" />
         <Compile Include="Logging\ILogFactory.cs"/>
         <Compile Include="Logging\ILogger.cs"/>
         <Compile Include="Logging\Layouts\AssemblyNameLayout.cs"/>
@@ -68,17 +72,21 @@
         <Compile Include="Logging\Writers\ILogWriter.cs"/>
         <Compile Include="Logging\Writers\PlayniteWriter.cs"/>
         <Compile Include="Models\Actions\CommandAction.cs"/>
-        <Compile Include="Models\Actions\ControllerAction.cs"/>
+        <Compile Include="Models\Actions\GameControllerAction.cs"/>
         <Compile Include="Infrastructures\ControllerActionType.cs"/>
         <Compile Include="Models\Actions\ExecutableAction.cs"/>
         <Compile Include="Models\Actions\IAction.cs"/>
         <Compile Include="Models\Actions\KeyboardAction.cs"/>
         <Compile Include="Models\Actions\PlayniteAction.cs"/>
         <Compile Include="Models\Actions\PowerShellCommandAction.cs"/>
+        <Compile Include="Models\Actions\Settings\GameControllerActionRumbleSettings.cs"/>
+        <Compile Include="Models\Actions\Settings\SystemActionPauseSettings.cs" />
+        <Compile Include="Models\Actions\SystemAction.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Serialization\BackwardCompatibleSerializationBinder.cs"/>
+        <Compile Include="Serialization\Serializer.cs"/>
         <Compile Include="Services\IControllerService.cs"/>
         <Compile Include="Utils\PlayniteLauncher.cs"/>
-        <Compile Include="Utils\Serializer.cs"/>
         <Compile Include="Utils\StackTraceUtils.cs"/>
         <Compile Include="Utils\WindowUtils.cs"/>
     </ItemGroup>
@@ -95,7 +103,6 @@
             <Name>InputLayer.Keyboard</Name>
         </ProjectReference>
     </ItemGroup>
-    <ItemGroup/>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
              Other similar extension points exist, see Microsoft.Common.targets.

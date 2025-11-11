@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using InputLayer.Common.Extensions;
 using InputLayer.Common.Logging;
 
 namespace InputLayer.Common.Models.Actions
@@ -11,6 +12,7 @@ namespace InputLayer.Common.Models.Actions
 
         private string _command;
         private bool _isHidden = true;
+        private string _workingDirectory;
 
         public string Command
         {
@@ -22,6 +24,12 @@ namespace InputLayer.Common.Models.Actions
         {
             get => _isHidden;
             set => this.SetValue(ref _isHidden, value);
+        }
+
+        public string WorkingDirectory
+        {
+            get => _workingDirectory;
+            set => this.SetValue(ref _workingDirectory, value);
         }
 
         /// <inheritdoc/>
@@ -40,6 +48,11 @@ namespace InputLayer.Common.Models.Actions
                     WindowStyle = this.IsHidden ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal
                 };
 
+                if (this.WorkingDirectory.IsNotNullOrWhiteSpace())
+                {
+                    startInfo.WorkingDirectory = this.WorkingDirectory;
+                }
+                
                 using (var process = Process.Start(startInfo))
                 {
                     if (process == null)
@@ -82,6 +95,7 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"PowerShell Command: {this.Command}";
+        public override string ToString()
+            => $"PowerShell Command: {this.Command}";
     }
 }

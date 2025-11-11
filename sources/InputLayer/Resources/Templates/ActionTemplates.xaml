@@ -1,0 +1,11 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="ActionTemplates/CommandAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/GameControllerAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/ExecutableAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/KeyboardAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/PlayniteAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/PowerShellCommandAction.xaml" />
+        <ResourceDictionary Source="ActionTemplates/SystemAction.xaml" />
+    </ResourceDictionary.MergedDictionaries>
+</ResourceDictionary>

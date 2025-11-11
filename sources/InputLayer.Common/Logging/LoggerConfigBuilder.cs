@@ -13,8 +13,11 @@ namespace InputLayer.Common.Logging
             return loggerConfig;
         }
 
-        public static LoggerConfig Create() => new LoggerConfig();
-        public static LoggerConfig Create(bool includeLogOriginDetails, LogLevel minLogLevel) => new LoggerConfig(includeLogOriginDetails, minLogLevel);
+        public static LoggerConfig Create()
+            => new LoggerConfig();
+
+        public static LoggerConfig Create(bool includeLogOriginDetails, LogLevel minLogLevel)
+            => new LoggerConfig(includeLogOriginDetails, minLogLevel);
 
         public static LoggerConfig IncludeLogOriginDetails(this LoggerConfig loggerConfig, bool includeLogOriginDetails)
         {

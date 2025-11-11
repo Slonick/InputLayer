@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
+            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{A551FDCD-D348-4D39-85CD-14E31D037995}</ProjectGuid>
+        <OutputType>Library</OutputType>
+        <AppDesignerFolder>Properties</AppDesignerFolder>
+        <RootNamespace>InputLayer.Settings</RootNamespace>
+        <AssemblyName>InputLayer.Settings</AssemblyName>
+        <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
+        <FileAlignment>512</FileAlignment>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug\</OutputPath>
+        <DefineConstants>DEBUG;TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <PlatformTarget>AnyCPU</PlatformTarget>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release\</OutputPath>
+        <DefineConstants>TRACE</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System"/>
+        <Reference Include="System.Core"/>
+        <Reference Include="System.Xml"/>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Mappers\IViewModelMapper.cs"/>
+        <Compile Include="Models\Actions\CommandActionData.cs"/>
+        <Compile Include="Models\Actions\ExecutableActionData.cs"/>
+        <Compile Include="Models\Actions\GameControllerActionData.cs"/>
+        <Compile Include="Models\Actions\ActionDataBase.cs"/>
+        <Compile Include="Models\Actions\KeyboardActionData.cs"/>
+        <Compile Include="Models\Actions\PlayniteActionData.cs"/>
+        <Compile Include="Models\Actions\PowerShellCommandActionData.cs"/>
+        <Compile Include="Models\Actions\Settings\GameControllerActionRumbleSettingsData.cs"/>
+        <Compile Include="Models\Actions\Settings\GameControllerActionSettingsDataBase.cs"/>
+        <Compile Include="Models\Actions\Settings\SystemActionPauseSettingsData.cs" />
+        <Compile Include="Models\Actions\Settings\SystemActionSettingsDataBase.cs" />
+        <Compile Include="Models\Actions\SystemActionData.cs" />
+        <Compile Include="Models\ControllerActionData.cs"/>
+        <Compile Include="Models\ControllerActionItemData.cs"/>
+        <Compile Include="Models\InputLayerSettingsData.cs"/>
+        <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="SettingsService.cs"/>
+        <Compile Include="SettingsServiceOptions.cs"/>
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\InputLayer.Common\InputLayer.Common.csproj">
+            <Project>{28a41b04-78a8-4d5c-bf78-ec1addf5afb1}</Project>
+            <Name>InputLayer.Common</Name>
+        </ProjectReference>
+        <ProjectReference Include="..\InputLayer.Keyboard\InputLayer.Keyboard.csproj">
+            <Project>{22636ae7-6d33-4c0d-a835-8e0e871a3f42}</Project>
+            <Name>InputLayer.Keyboard</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
+    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+         Other similar extension points exist, see Microsoft.Common.targets.
+    <Target Name="BeforeBuild">
+    </Target>
+    <Target Name="AfterBuild">
+    </Target>
+    -->
+
+</Project>

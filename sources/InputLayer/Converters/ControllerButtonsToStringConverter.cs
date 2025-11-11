@@ -13,20 +13,21 @@ namespace InputLayer.Converters
         /// <inheritdoc/>
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            if (values.Length == 2 &&
+            if (values.Length == 3 &&
                 values[0] is ControllerInput mainButton &&
-                values[1] is ControllerInput button)
+                values[1] is ControllerInput button &&
+                values[2] is ControllerInputDisplayMode displayMode)
             {
                 switch (button)
                 {
                     case ControllerInput.None:
                         return null;
                     case ControllerInput.Main:
-                        return ControllerButtonHelper.GetDisplayName(mainButton);
+                        return ControllerButtonHelper.GetDisplayName(mainButton, displayMode);
                     case ControllerInput.LongPress:
-                        return $"{ControllerButtonHelper.GetDisplayName(mainButton)} {ResourceProvider.GetString("LOCInputLayerLongPress")}";
+                        return $"{ControllerButtonHelper.GetDisplayName(mainButton, displayMode)} {ResourceProvider.GetString("InputLayer.LongPress")}";
                     default:
-                        return $"{ControllerButtonHelper.GetDisplayName(mainButton)} + {ControllerButtonHelper.GetDisplayName(button)}";
+                        return $"{ControllerButtonHelper.GetDisplayName(mainButton, displayMode)} + {ControllerButtonHelper.GetDisplayName(button, displayMode)}";
                 }
             }
 

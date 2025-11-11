@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:actions="clr-namespace:InputLayer.Common.Models.Actions;assembly=InputLayer.Common"
+                    xmlns:controls="clr-namespace:InputLayer.Controls"
+                    xmlns:converters="clr-namespace:InputLayer.Converters"
+                    xmlns:infrastructuresCommon="clr-namespace:InputLayer.Common.Infrastructures;assembly=InputLayer.Common"
+                    xmlns:me="clr-namespace:InputLayer.MarkupExtensions">
+
+    <DataTemplate DataType="{x:Type actions:PlayniteAction}">
+        <controls:PlaceholderControl Grid.Column="0"
+                                     IsContentFocused="{Binding ElementName=PlayniteActionComboBox, Path=IsFocused}"
+                                     IsEmpty="{Binding ElementName=PlayniteActionComboBox, Path=SelectedValue, Converter={converters:NullToBooleanConverter}}"
+                                     Placeholder="{me:LocalizationBinding Key=InputLayer.PlayniteAction.Placeholder}">
+            <ComboBox x:Name="PlayniteActionComboBox"
+                      ItemsSource="{Binding Source={x:Type infrastructuresCommon:PlayniteActionType}, Converter={converters:EnumToSourceConverter}}"
+                      SelectedValue="{Binding ActionType, Mode=TwoWay}">
+
+                <ComboBox.ItemTemplate>
+                    <DataTemplate DataType="{x:Type infrastructuresCommon:PlayniteActionType}">
+                        <TextBlock Text="{me:LocalizationBinding Path=., StringFormat={}InputLayer.PlayniteAction.{0}.Name}" ToolTip="{me:LocalizationBinding Path=., StringFormat={}InputLayer.PlayniteAction.{0}.Description}" />
+                    </DataTemplate>
+                </ComboBox.ItemTemplate>
+
+            </ComboBox>
+        </controls:PlaceholderControl>
+    </DataTemplate>
+
+</ResourceDictionary>

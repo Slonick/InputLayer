@@ -36,12 +36,12 @@
     <ItemGroup>
         <Reference Include="System"/>
         <Reference Include="System.Core"/>
+        <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Constants.cs"/>
         <Compile Include="IPCClient.cs"/>
         <Compile Include="IPCConnect.cs"/>
-        <Compile Include="IPCMessageType.cs"/>
         <Compile Include="IPCSerializer.cs"/>
         <Compile Include="IPCServer.cs"/>
         <Compile Include="Models\ButtonPressedPayload.cs"/>
@@ -49,6 +49,7 @@
         <Compile Include="Models\ControllerConnectedPayload.cs"/>
         <Compile Include="Models\ControllerDisconnectedPayload.cs"/>
         <Compile Include="Models\IPCMessage.cs"/>
+        <Compile Include="Models\PingMessage.cs"/>
         <Compile Include="Models\RumblePayload.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>

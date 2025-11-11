@@ -1,6 +1,8 @@
 ﻿using System.Reflection;
 using InputLayer.Common.Constants;
 using InputLayer.Common.Logging;
+using InputLayer.Controls;
+using Playnite.SDK;
 using LogManager = Playnite.SDK.LogManager;
 
 namespace InputLayer
@@ -21,6 +23,11 @@ namespace InputLayer
                                                   .UseFileLogger(PathConstants.LogFile);
 
             Common.Logging.LogManager.Default.SetConfig(loggerConfig);
+
+            ResourcesLoader.Load();
+
+            var language = API.Instance.ApplicationSettings.Language;
+            LocalizationLoader.LoadLanguage(language);
         }
     }
 }

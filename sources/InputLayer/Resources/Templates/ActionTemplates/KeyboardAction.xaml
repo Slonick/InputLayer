@@ -1,0 +1,28 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:actions="clr-namespace:InputLayer.Common.Models.Actions;assembly=InputLayer.Common"
+                    xmlns:attachedProperties="clr-namespace:InputLayer.AttachedProperties"
+                    xmlns:controls="clr-namespace:InputLayer.Controls"
+                    xmlns:converters="clr-namespace:InputLayer.Converters"
+                    xmlns:me="clr-namespace:InputLayer.MarkupExtensions">
+
+    <DataTemplate DataType="{x:Type actions:KeyboardAction}">
+        <controls:PlaceholderControl IsContentFocused="{Binding ElementName=KeyboardTextBox, Path=IsFocused}"
+                                     IsEmpty="{Binding ElementName=KeyboardTextBox, Path=Text, Converter={converters:TextToBooleanConverter}}"
+                                     Placeholder="{me:LocalizationBinding Key=InputLayer.KeyboardAction.Placeholder}">
+            <TextBox x:Name="KeyboardTextBox"
+                     VerticalContentAlignment="Center"
+                     attachedProperties:HotKeyTextBoxBehavior.IsEnabled="True">
+                <TextBox.Text>
+                    <MultiBinding Converter="{converters:KeyboardActionToTextConverter}"
+                                  Mode="OneWay"
+                                  UpdateSourceTrigger="Explicit">
+                        <Binding Path="Key" />
+                        <Binding Path="Modifiers" />
+                    </MultiBinding>
+                </TextBox.Text>
+            </TextBox>
+        </controls:PlaceholderControl>
+    </DataTemplate>
+
+</ResourceDictionary>

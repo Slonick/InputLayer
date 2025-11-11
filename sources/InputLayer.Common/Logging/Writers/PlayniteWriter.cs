@@ -11,8 +11,6 @@
 
         /// <inheritdoc/>
         public void Write(string line)
-        {
-            _logger.Info(line);
-        }
+            => _logger.Info(line);
     }
 }

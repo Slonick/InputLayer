@@ -1,9 +1,10 @@
-﻿using InputLayer.Common.Infrastructures;
+﻿using System.Collections.Generic;
+using InputLayer.Common.Infrastructures;
 using InputLayer.Common.Utils;
 
 namespace InputLayer.Common.Models.Actions
 {
-    public class PlayniteAction : IAction
+    public class PlayniteAction : ObservableObject, IAction
     {
         public PlayniteActionType ActionType { get; set; }
 
@@ -25,6 +26,7 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"Playnite: {this.ActionType}";
+        public override string ToString()
+            => $"Playnite: {this.ActionType}";
     }
 }

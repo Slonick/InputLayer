@@ -3,6 +3,6 @@
     public enum ControllerButtonMode
     {
         Single,
-        Combination,
+        Combination
     }
 }

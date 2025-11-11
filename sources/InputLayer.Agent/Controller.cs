@@ -35,17 +35,17 @@ namespace InputLayer.Agent
             { ControllerInput.Y, ControllerInputState.Released }
         };
 
-        public Controller(IntPtr controllerId, IntPtr joystickId, int instanceId, string name)
+        public Controller(IntPtr controllerId, int instanceId, string name)
         {
             this.ControllerId = controllerId;
-            this.JoystickId = joystickId;
             this.InstanceId = instanceId;
             this.Name = name;
         }
 
         public IntPtr ControllerId { get; }
+
         public int InstanceId { get; }
-        public IntPtr JoystickId { get; }
+
         public string Name { get; }
     }
 }

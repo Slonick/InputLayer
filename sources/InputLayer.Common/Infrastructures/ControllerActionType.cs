@@ -1,6 +1,6 @@
 ﻿namespace InputLayer.Common.Infrastructures
 {
-    public enum ControllerActionType
+    public enum GameControllerActionType
     {
         Rumble
     }

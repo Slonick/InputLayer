@@ -29,11 +29,8 @@ namespace InputLayer.Common.Logging.Writers
 
         public string FilePath { get; }
 
-        // Метод для очистки ресурсов
         public void Dispose()
-        {
-            _writeMutex?.Dispose();
-        }
+            => _writeMutex?.Dispose();
 
         public void Write(string line)
         {

@@ -13,112 +13,105 @@ namespace InputLayer.Common.Logging
 
         public string Name { get; private set; }
 
-        public void Debug(Exception exception,
-                          string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Debug, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Debug(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Debug, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Debug(string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Debug, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Debug(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Debug, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Error(Exception exception,
-                          string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Error, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Error(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Error, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Error(string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Error, message, argument)
-                                          .WithCategory(this.Name).WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Error(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Error, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Fatal(Exception exception,
-                          string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Fatal, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Fatal(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Fatal, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Fatal(string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Fatal, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Fatal(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Fatal, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Info(Exception exception,
-                         string message,
-                         object[] argument,
-                         [CallerMemberName] string memberName = "",
-                         [CallerFilePath] string filePath = "",
-                         [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Info, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Info(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Info, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Info(string message,
-                         object[] argument,
-                         [CallerMemberName] string memberName = "",
-                         [CallerFilePath] string filePath = "",
-                         [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Info, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Info(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Info, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
         public void Initialize(string name, ILogFactory logFactoryInstance)
         {
@@ -126,88 +119,82 @@ namespace InputLayer.Common.Logging
             _logFactory = logFactoryInstance;
         }
 
-        public void Log(LogLevel logLevel,
-                        Exception exception,
-                        string message,
-                        object[] argument,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string filePath = "",
-                        [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(logLevel, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Log(
+            LogLevel logLevel,
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(logLevel, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Log(LogLevel logLevel,
-                        string message,
-                        object[] argument,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string filePath = "",
-                        [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(logLevel, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Log(
+            LogLevel logLevel,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(logLevel, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Trace(Exception exception,
-                          string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Trace, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Trace(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Trace, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Trace(string message,
-                          object[] argument,
-                          [CallerMemberName] string memberName = "",
-                          [CallerFilePath] string filePath = "",
-                          [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Trace, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Trace(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Trace, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Warn(Exception exception,
-                         string message,
-                         object[] argument,
-                         [CallerMemberName] string memberName = "",
-                         [CallerFilePath] string filePath = "",
-                         [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Warn, message, argument, exception)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Warn(
+            Exception exception,
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Warn, message, argument, exception)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
-        public void Warn(string message,
-                         object[] argument,
-                         [CallerMemberName] string memberName = "",
-                         [CallerFilePath] string filePath = "",
-                         [CallerLineNumber] int lineNumber = 0)
-        {
-            this.Write(LogEventInfoBuilder.Create(LogLevel.Warn, message, argument)
-                                          .WithCategory(this.Name)
-                                          .WithTimeStamp(DateTimeOffset.Now)
-                                          .WithAssembly(_logFactory.Config.Assembly)
-                                          .WithCallerInfo(memberName, filePath, lineNumber));
-        }
+        public void Warn(
+            string message,
+            object[] argument,
+            [CallerMemberName] string memberName = "",
+            [CallerFilePath] string filePath = "",
+            [CallerLineNumber] int lineNumber = 0)
+            => this.Write(LogEventInfoBuilder.Create(LogLevel.Warn, message, argument)
+                                             .WithCategory(this.Name)
+                                             .WithTimeStamp(DateTimeOffset.Now)
+                                             .WithAssembly(_logFactory.Config.Assembly)
+                                             .WithCallerInfo(memberName, filePath, lineNumber));
 
         private string BuildLayout(LogEventInfo logEventInfo)
         {

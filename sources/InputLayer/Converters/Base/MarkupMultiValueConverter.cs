@@ -6,7 +6,7 @@ using System.Windows.Markup;
 namespace InputLayer.Converters.Base
 {
     /// <summary>
-    ///     MarkupMultiValueConverter is a MarkupExtension which can be used for MultiValueConverter.
+    ///     MarkupMultiValueConverter is a MarkupExtension that can be used for MultiValueConverter.
     /// </summary>
     /// <seealso cref="System.Windows.Markup.MarkupExtension"/>
     /// <seealso cref="System.Windows.Data.IMultiValueConverter"/>
@@ -21,6 +21,7 @@ namespace InputLayer.Converters.Base
             => throw new NotImplementedException();
 
         /// <inheritdoc/>
-        public override object ProvideValue(IServiceProvider serviceProvider) => this;
+        public override object ProvideValue(IServiceProvider serviceProvider)
+            => this;
     }
 }

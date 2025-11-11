@@ -17,13 +17,14 @@ namespace InputLayer.Converters
         {
             if (values.Length < 3 ||
                 !(values[0] is ICollection<ControllerInput> buttons) ||
-                !(values[1] is ItemsControl itemsControl) ||
-                !(values[2] is ComboBox source))
+                !(values[1] is ControllerInput mainButton) ||
+                !(values[2] is ItemsControl itemsControl) ||
+                !(values[3] is ComboBox source))
             {
                 return Binding.DoNothing;
             }
 
-            var selectedItems = new List<ControllerInput>();
+            var selectedItems = new List<ControllerInput> { mainButton };
 
             foreach (var item in itemsControl.Items)
             {

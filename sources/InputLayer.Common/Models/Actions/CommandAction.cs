@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using InputLayer.Common.Extensions;
 using InputLayer.Common.Logging;
 
 namespace InputLayer.Common.Models.Actions
@@ -12,6 +13,7 @@ namespace InputLayer.Common.Models.Actions
 
         private string _command;
         private bool _isHidden = true;
+        private string _workingDirectory;
 
         public string Command
         {
@@ -23,6 +25,12 @@ namespace InputLayer.Common.Models.Actions
         {
             get => _isHidden;
             set => this.SetValue(ref _isHidden, value);
+        }
+
+        public string WorkingDirectory
+        {
+            get => _workingDirectory;
+            set => this.SetValue(ref _workingDirectory, value);
         }
 
         /// <inheritdoc/>
@@ -44,6 +52,11 @@ namespace InputLayer.Common.Models.Actions
                     StandardErrorEncoding = Encoding.UTF8
                 };
 
+                if (this.WorkingDirectory.IsNotNullOrWhiteSpace())
+                {
+                    startInfo.WorkingDirectory = this.WorkingDirectory;
+                }
+                
                 using (var process = Process.Start(startInfo))
                 {
                     if (process == null)
@@ -67,14 +80,9 @@ namespace InputLayer.Common.Models.Actions
                     _logger.Info($"CMD command executed: {this.Command}");
                     _logger.Info($"Exit code: {process.ExitCode}");
 
-                    if (!string.IsNullOrEmpty(output))
-                    {
-                        _logger.Info($"CMD output: {output}");
-                    }
-                    else
-                    {
-                        _logger.Info("CMD output: [no output]");
-                    }
+                    _logger.Info(!string.IsNullOrEmpty(output)
+                                     ? $"CMD output: {output}"
+                                     : "CMD output: [no output]");
 
                     if (!string.IsNullOrEmpty(error))
                     {
@@ -98,6 +106,7 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"Command: {this.Command}";
+        public override string ToString()
+            => $"Command: {this.Command}";
     }
 }

@@ -24,8 +24,10 @@ namespace InputLayer.Common.Logging
             return false;
         }
 
-        public bool Equals(LoggerCacheKey other) => this.ConcreteType == other.ConcreteType && string.Equals(other.Name, this.Name, StringComparison.Ordinal);
+        public bool Equals(LoggerCacheKey other)
+            => this.ConcreteType == other.ConcreteType && string.Equals(other.Name, this.Name, StringComparison.Ordinal);
 
-        public override int GetHashCode() => this.ConcreteType.GetHashCode() ^ this.Name.GetHashCode();
+        public override int GetHashCode()
+            => this.ConcreteType.GetHashCode() ^ this.Name.GetHashCode();
     }
 }

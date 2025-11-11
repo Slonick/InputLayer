@@ -10,11 +10,15 @@ namespace InputLayer.MarkupExtensions
     {
         public LocalizationBinding() { }
 
-        public LocalizationBinding(PropertyPath path, string stringFormat = null)
+        public LocalizationBinding(PropertyPath path, string stringFormat = null, object key = null)
         {
             this.Path = path;
             this.StringFormat = stringFormat;
+            this.Key = key;
         }
+
+        [ConstructorArgument("key")]
+        public object Key { get; set; }
 
         [ConstructorArgument("path")]
         public PropertyPath Path { get; set; }
@@ -23,13 +27,22 @@ namespace InputLayer.MarkupExtensions
         public string StringFormat { get; set; }
 
         public override object ProvideValue(IServiceProvider serviceProvider)
-            => new Binding(this.Path.Path)
+        {
+            var binding = new Binding
             {
                 Path = this.Path,
                 Converter = new LocalizationConverter(),
                 ConverterParameter = this.StringFormat,
                 UpdateSourceTrigger = UpdateSourceTrigger.PropertyChanged,
-                Mode = BindingMode.OneTime
+                Mode = BindingMode.OneWay
             };
+
+            if (this.Key != null)
+            {
+                binding.Source = this.Key;
+            }
+
+            return binding.ProvideValue(serviceProvider);
+        }
     }
 }

@@ -14,9 +14,13 @@ namespace InputLayer.Converters
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
             if (values.Length == 2 &&
-                values[0] is Modifiers[] modificators &&
-                values[1] is Keys key)
+                values[0] is Keys key)
             {
+                if (!(values[1] is Modifiers[] modificators))
+                {
+                    modificators = Array.Empty<Modifiers>();
+                }
+
                 if (modificators.Length == 0 && key == Keys.None)
                 {
                     return null;

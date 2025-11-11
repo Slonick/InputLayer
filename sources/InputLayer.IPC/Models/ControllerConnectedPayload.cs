@@ -1,8 +1,9 @@
 ﻿namespace InputLayer.IPC.Models
 {
-    public class ControllerConnectedMessage : IIPCMessage
+    public class ControllerConnectedMessage : IPCMessage
     {
         /// <inheritdoc/>
-        public override string ToString() => "Controller connected";
+        public override string ToString()
+            => "Controller connected";
     }
 }

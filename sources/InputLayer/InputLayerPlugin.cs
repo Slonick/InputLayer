@@ -5,7 +5,6 @@ using System.Windows.Controls;
 using InputLayer.Common.Extensions;
 using InputLayer.Common.Infrastructures;
 using InputLayer.Common.Services;
-using InputLayer.Infrastructures;
 using InputLayer.Models;
 using InputLayer.Services;
 using InputLayer.ViewModels;
@@ -30,7 +29,7 @@ namespace InputLayer
         {
             Bootstrapper.Setup();
 
-            var settingsService = new SettingsService<InputLayerSettings>(this);
+            var settingsService = new SettingsManager(this);
 
             _logger.Trace("Loading plugin settings...");
             var settings = settingsService.LoadPluginSettings();
@@ -42,7 +41,7 @@ namespace InputLayer
 
             _settings = settings;
 
-            _controllerService = new ControllerService();
+            _controllerService = new ControllerService(_settings);
 
             _model = new InputLayerSettingsViewModel(settingsService, _settings, _controllerService);
             this.Properties = new GenericPluginProperties
@@ -55,10 +54,12 @@ namespace InputLayer
         public override Guid Id => Guid.Parse("a4c131df-24fb-44f7-8e79-db5cd3988563");
 
         /// <inheritdoc/>
-        public override ISettings GetSettings(bool firstRunSettings) => _model;
+        public override ISettings GetSettings(bool firstRunSettings)
+            => _model;
 
         /// <inheritdoc/>
-        public override UserControl GetSettingsView(bool firstRunSettings) => new InputLayerSettingsView { DataContext = _model };
+        public override UserControl GetSettingsView(bool firstRunSettings)
+            => new InputLayerSettingsView { DataContext = _model };
 
         /// <inheritdoc/>
         public override async void OnApplicationStarted(OnApplicationStartedEventArgs args)
@@ -136,7 +137,7 @@ namespace InputLayer
                     _logger.Trace($"Executing action: {action.Action}");
                     switch (action.ActionType)
                     {
-                        case ActionType.Controller:
+                        case ActionType.GameController:
                             action.Action.Execute(_controllerService);
                             break;
                         default:
@@ -179,8 +180,15 @@ namespace InputLayer
             {
                 foreach (var action in controllerAction.Actions)
                 {
-                    _logger.Trace($"Executing action: {action.Action}");
-                    action.Action.Execute();
+                    try
+                    {
+                        _logger.Trace($"Executing action: {action.Action}");
+                        action.Action.Execute();
+                    }
+                    catch (Exception e)
+                    {
+                        _logger.Error(e, $"Failed to execute action: {action.Action}");
+                    }
                 }
             }
         }
