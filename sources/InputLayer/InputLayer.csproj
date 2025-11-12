@@ -124,7 +124,6 @@
         <None Include="icon.png">
             <CopyToOutputDirectory>Always</CopyToOutputDirectory>
         </None>
-        <None Include="InputLayer.yaml"/>
     </ItemGroup>
     <ItemGroup>
         <Page Include="Views\InputLayerSettingsView.xaml">
