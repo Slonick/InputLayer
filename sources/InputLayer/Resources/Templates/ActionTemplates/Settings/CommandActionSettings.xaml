@@ -9,27 +9,12 @@
                     xmlns:views="clr-namespace:InputLayer.Views"
                     mc:Ignorable="d">
 
-    <DataTemplate x:Key="ExecutableActionSettings" DataType="{x:Type actions:ExecutableAction}">
+    <DataTemplate x:Key="CommandActionSettings" DataType="{x:Type actions:CommandAction}">
         <controls:StackPanelWithGap HorizontalAlignment="Stretch"
                                     Gap="10"
                                     Orientation="Vertical"
                                     Visibility="{Binding IsOpenOptionalSettings,
                                                          Converter={converters:BooleanToVisibilityConverter}}">
-            <HeaderedContentControl Header="{me:LocalizationBinding Key=InputLayer.ExecutableAction.Arguments.Title}">
-                <controls:PlaceholderControl IsContentFocused="{Binding ElementName=ArgumentsTextBox,
-                                                                        Path=IsFocused}"
-                                             IsEmpty="{Binding ElementName=ArgumentsTextBox,
-                                                               Path=Text,
-                                                               Converter={converters:TextToBooleanConverter}}"
-                                             Placeholder="{me:LocalizationBinding Key=InputLayer.ExecutableAction.Arguments.Placeholder}">
-                    <TextBox x:Name="ArgumentsTextBox"
-                             MinHeight="28"
-                             VerticalContentAlignment="Center"
-                             Text="{Binding Arguments,
-                                            UpdateSourceTrigger=PropertyChanged}" />
-                </controls:PlaceholderControl>
-            </HeaderedContentControl>
-
 
             <controls:GridWithGap ColumnGap="10">
                 <Grid.ColumnDefinitions>
@@ -37,13 +22,14 @@
                     <ColumnDefinition Width="Auto" />
                 </Grid.ColumnDefinitions>
 
-                <HeaderedContentControl Grid.Column="0" Header="{me:LocalizationBinding Key=InputLayer.ExecutableAction.WorkingDirectory.Title}">
+                <HeaderedContentControl Grid.Column="0" Header="{me:LocalizationBinding Key=InputLayer.CommandAction.WorkingDirectory.Title}">
+
                     <controls:PlaceholderControl IsContentFocused="{Binding ElementName=WorkingDirectoryTextBox,
                                                                             Path=IsFocused}"
                                                  IsEmpty="{Binding ElementName=WorkingDirectoryTextBox,
                                                                    Path=Text,
                                                                    Converter={converters:TextToBooleanConverter}}"
-                                                 Placeholder="{me:LocalizationBinding Key=InputLayer.ExecutableAction.WorkingDirectory.Placeholder}">
+                                                 Placeholder="{me:LocalizationBinding Key=InputLayer.CommandAction.WorkingDirectory.Placeholder}">
                         <TextBox x:Name="WorkingDirectoryTextBox"
                                  MinHeight="28"
                                  VerticalContentAlignment="Center"
@@ -62,7 +48,7 @@
                                               RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
                             CommandParameter="{Binding Path=.,
                                                        Mode=TwoWay}"
-                            ToolTip="{me:LocalizationBinding Key=InputLayer.ExecutableAction.WorkingDirectory.Clear}">
+                            ToolTip="{me:LocalizationBinding Key=InputLayer.CommandAction.WorkingDirectory.Clear}">
                         <Path Width="16"
                               Height="16"
                               Data="{DynamicResource BackspaceGeometry}"
@@ -75,7 +61,7 @@
                                               RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
                             CommandParameter="{Binding Path=.,
                                                        Mode=TwoWay}"
-                            ToolTip="{me:LocalizationBinding Key=InputLayer.ExecutableAction.WorkingDirectory.Select}">
+                            ToolTip="{me:LocalizationBinding Key=InputLayer.CommandAction.WorkingDirectory.Select}">
                         <Path Width="16"
                               Height="16"
                               Data="{DynamicResource OpenGeometry}"

@@ -98,6 +98,30 @@
     <system:String x:Key="InputLayer.CommandAction.Placeholder">
         Enter command
     </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleExecutableVisibility.Description">
+        Hide or show the window when executing the command
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleOptionalSettingsVisibility.Description">
+        Show additional settings
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Title">
+        Working Directory
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Placeholder">
+        Select working directory
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Clear">
+        Clear
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Select">
+        Select
+    </system:String>
     <!--#endregion Command Action-->
 
     <!--#region PowerShell Command Action-->
@@ -111,6 +135,30 @@
 
     <system:String x:Key="InputLayer.PowerShellCommandAction.Placeholder">
         Enter PowerShell command
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleExecutableVisibility.Description">
+        Hide or show the window when executing the command
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleOptionalSettingsVisibility.Description">
+        Show additional settings
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Title">
+        Working Directory
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder">
+        Select working directory
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Clear">
+        Clear
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Select">
+        Select
     </system:String>
     <!--#endregion PowerShell Command Action-->
 
@@ -139,8 +187,16 @@
         Select executable
     </system:String>
 
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Title">
+        Arguments
+    </system:String>
+
     <system:String x:Key="InputLayer.ExecutableAction.Arguments.Placeholder">
         Enter command line arguments
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Title">
+        Working Directory
     </system:String>
 
     <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Placeholder">

@@ -19,7 +19,9 @@
                         <TextBlock x:Name="PART_PlaceholderText"
                                    Margin="{TemplateBinding Padding}"
                                    VerticalAlignment="Center"
-                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content.(Control.Foreground)}"
+                                   FontStyle="Italic"
+                                   Foreground="{Binding RelativeSource={RelativeSource TemplatedParent},
+                                                        Path=Content.(Control.Foreground)}"
                                    IsHitTestVisible="False"
                                    Opacity="0.6"
                                    Text="{TemplateBinding Placeholder}"

@@ -98,6 +98,30 @@
     <system:String x:Key="InputLayer.CommandAction.Placeholder">
         Introducir comando
     </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleExecutableVisibility.Description">
+        Ocultar o mostrar la ventana al ejecutar el comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleOptionalSettingsVisibility.Description">
+        Mostrar configuración adicional
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Title">
+        Directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Placeholder">
+        Seleccionar directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Clear">
+        Limpiar
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Select">
+        Seleccionar
+    </system:String>
     <!--#endregion Command Action-->
 
     <!--#region PowerShell Command Action-->
@@ -111,6 +135,30 @@
 
     <system:String x:Key="InputLayer.PowerShellCommandAction.Placeholder">
         Introducir comando PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleExecutableVisibility.Description">
+        Ocultar o mostrar la ventana al ejecutar el comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleOptionalSettingsVisibility.Description">
+        Mostrar configuración adicional
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Title">
+        Directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder">
+        Seleccionar directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Clear">
+        Limpiar
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Select">
+        Seleccionar
     </system:String>
     <!--#endregion PowerShell Command Action-->
 
@@ -139,8 +187,16 @@
         Seleccionar ejecutable
     </system:String>
 
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Title">
+        Argumentos
+    </system:String>
+
     <system:String x:Key="InputLayer.ExecutableAction.Arguments.Placeholder">
         Introducir argumentos de línea de comandos
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Title">
+        Directorio de trabajo
     </system:String>
 
     <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Placeholder">

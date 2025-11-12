@@ -45,6 +45,19 @@
                                         Orientation="Horizontal">
 
                 <!--  ReSharper disable Xaml.BindingWithContextNotResolved  -->
+                <Button Command="{Binding DataContext.OpenExecutableCommand,
+                                          RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
+                        CommandParameter="{Binding Path=.,
+                                                   Mode=TwoWay}"
+                        ToolTip="{me:LocalizationBinding Key=InputLayer.ExecutableAction.Select}">
+                    <Path Width="16"
+                          Height="16"
+                          Data="{DynamicResource OpenGeometry}"
+                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
+                                         Path=Foreground}"
+                          Stretch="Uniform" />
+                </Button>
+
                 <Button x:Name="ToggleVisibleActionButton"
                         Command="{Binding DataContext.ToggleVisibleActionCommand,
                                           RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
@@ -95,19 +108,6 @@
                             </MultiBinding>
                         </Path.Data>
                     </Path>
-                </Button>
-
-                <Button Command="{Binding DataContext.OpenExecutableCommand,
-                                          RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
-                        CommandParameter="{Binding Path=.,
-                                                   Mode=TwoWay}"
-                        ToolTip="{me:LocalizationBinding Key=InputLayer.ExecutableAction.Select}">
-                    <Path Width="16"
-                          Height="16"
-                          Data="{DynamicResource OpenGeometry}"
-                          Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
-                                         Path=Foreground}"
-                          Stretch="Uniform" />
                 </Button>
                 <!--  ReSharper restore Xaml.BindingWithContextNotResolved  -->
 

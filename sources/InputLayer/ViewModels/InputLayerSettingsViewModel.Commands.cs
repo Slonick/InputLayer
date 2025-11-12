@@ -65,7 +65,7 @@ namespace InputLayer.ViewModels
             => action.IsOpenOptionalSettings = !action.IsOpenOptionalSettings;
 
         private bool ToggleOptionalSettingsVisibilityCanExecute(IActionWithParams action)
-            => action != null;
+            => action?.HasOptionalSettings == true;
 
         private void ToggleVisibleAction(IExecutableAction action)
             => action.IsHidden = !action.IsHidden;

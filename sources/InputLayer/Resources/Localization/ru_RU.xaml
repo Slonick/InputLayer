@@ -98,6 +98,30 @@
     <system:String x:Key="InputLayer.CommandAction.Placeholder">
         Введите команду
     </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleExecutableVisibility.Description">
+        Скрыть или показать окно при выполнении команды
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleOptionalSettingsVisibility.Description">
+        Показать дополнительные настройки
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Title">
+        Рабочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Placeholder">
+        Выберите рабочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Clear">
+        Очистить
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Select">
+        Выбрать
+    </system:String>
     <!--#endregion Command Action-->
 
     <!--#region PowerShell Command Action-->
@@ -111,6 +135,30 @@
 
     <system:String x:Key="InputLayer.PowerShellCommandAction.Placeholder">
         Введите команду PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleExecutableVisibility.Description">
+        Скрыть или показать окно при выполнении команды
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleOptionalSettingsVisibility.Description">
+        Показать дополнительные настройки
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Title">
+        Рабочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder">
+        Выберите рабочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Clear">
+        Очистить
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Select">
+        Выбрать
     </system:String>
     <!--#endregion PowerShell Command Action-->
 
@@ -139,8 +187,16 @@
         Выберите исполняемый файл
     </system:String>
 
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Title">
+        Аргументы
+    </system:String>
+
     <system:String x:Key="InputLayer.ExecutableAction.Arguments.Placeholder">
         Введите аргументы командной строки
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Title">
+        Рабочий каталог
     </system:String>
 
     <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Placeholder">

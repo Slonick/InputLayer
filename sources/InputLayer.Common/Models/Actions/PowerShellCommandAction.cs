@@ -6,13 +6,17 @@ using InputLayer.Common.Logging;
 
 namespace InputLayer.Common.Models.Actions
 {
-    public class PowerShellCommandAction : ObservableObject, IExecutableAction
+    public class PowerShellCommandAction : ObservableObject, IExecutableActionWithParams
     {
         private readonly ILogger _logger = LogManager.Default.GetCurrentClassLogger();
 
         private string _command;
         private bool _isHidden = true;
+        private bool _isOpenOptionalSettings;
         private string _workingDirectory;
+
+        /// <inheritdoc/>
+        public bool HasOptionalSettings => true;
 
         public string Command
         {
@@ -24,6 +28,13 @@ namespace InputLayer.Common.Models.Actions
         {
             get => _isHidden;
             set => this.SetValue(ref _isHidden, value);
+        }
+
+        /// <inheritdoc/>
+        public bool IsOpenOptionalSettings
+        {
+            get => _isOpenOptionalSettings;
+            set => this.SetValue(ref _isOpenOptionalSettings, value);
         }
 
         public string WorkingDirectory
@@ -52,7 +63,7 @@ namespace InputLayer.Common.Models.Actions
                 {
                     startInfo.WorkingDirectory = this.WorkingDirectory;
                 }
-                
+
                 using (var process = Process.Start(startInfo))
                 {
                     if (process == null)
