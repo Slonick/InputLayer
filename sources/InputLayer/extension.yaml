@@ -1,7 +1,7 @@
 Id: InputLayer
 Name: Input Layer
 Author: Slonick
-Version: 0.1.0
+Version: 0.2.0
 Module: InputLayer.dll
 Type: GenericPlugin
 Icon: icon.png

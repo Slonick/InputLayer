@@ -1,5 +1,12 @@
 AddonId: "InputLayer"
 Packages:
+  - Version: 0.2
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2025-11-12
+    PackageUrl: https://github.com/Slonick/InputLayer/releases/download/v0.2/InputLayer.pext   
+    Changelog:
+      - "Added new actions"
+      - "Fixed bugs"
   - Version: 0.1
     RequiredApiVersion: 6.0.0
     ReleaseDate: 2025-11-01
