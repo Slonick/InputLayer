@@ -1,6 +1,5 @@
 ﻿using System.Xml.Serialization;
 using InputLayer.Common.Infrastructures;
-using InputLayer.Common.Models.Actions;
 using InputLayer.Settings.Models.Actions.Settings;
 
 namespace InputLayer.Settings.Models.Actions
