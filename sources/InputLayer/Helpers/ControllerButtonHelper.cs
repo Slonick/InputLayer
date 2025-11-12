@@ -18,56 +18,72 @@ namespace InputLayer.Helpers
                                                                            x != ControllerInput.RightStickDown &&
                                                                            x != ControllerInput.RightStickLeft &&
                                                                            x != ControllerInput.RightStickRight &&
-                                                                           x != ControllerInput.RightStickUp)
+                                                                           x != ControllerInput.RightStickUp &&
+                                                                           x != ControllerInput.Main)
                                                                .ToList();
 
-        public static List<ControllerInput> MainButtons => new List<ControllerInput>
-        {
-            ControllerInput.Guide,
-            ControllerInput.Start,
-            ControllerInput.Back,
-        };
+        public static List<ControllerInput> MainButtons
+            => new List<ControllerInput>
+            {
+                ControllerInput.Guide,
+                ControllerInput.Start,
+                ControllerInput.Back
+            };
 
-        public static string GetDisplayName(ControllerInput button)
+        public static string GetDisplayName(ControllerInput button, ControllerInputDisplayMode mode = ControllerInputDisplayMode.XBOX)
         {
             switch (button)
             {
                 case ControllerInput.A:
-                    return "A / Cross ✖";
+                    return MapButton(mode, "A", "Cross ✖", "B");
                 case ControllerInput.B:
-                    return "B / Circle ●";
+                    return MapButton(mode, "B", "Circle ●", "A");
                 case ControllerInput.X:
-                    return "X / Square ■";
+                    return MapButton(mode, "X", "Square ■", "Y");
                 case ControllerInput.Y:
-                    return "Y / Triangle ▲";
+                    return MapButton(mode, "Y", "Triangle ▲", "X");
                 case ControllerInput.Guide:
-                    return "Guide / PS";
+                    return MapButton(mode, "Guide", "PS", "Home");
                 case ControllerInput.Start:
-                    return "Start / Options";
+                    return MapButton(mode, "Start", "Options", "Plus +");
                 case ControllerInput.Back:
-                    return "Back / Share";
+                    return MapButton(mode, "Back", "Share", "Minus −");
                 case ControllerInput.LeftStick:
-                    return "LS / L3";
+                    return MapButton(mode, "LS", "L3", "Left Stick");
                 case ControllerInput.RightStick:
-                    return "RS / R3";
+                    return MapButton(mode, "RS", "R3", "Right Stick");
                 case ControllerInput.LeftShoulder:
-                    return "LB / L1";
+                    return MapButton(mode, "LB", "L1", "L");
                 case ControllerInput.RightShoulder:
-                    return "RB / R1";
+                    return MapButton(mode, "RB", "R1", "R");
                 case ControllerInput.TriggerLeft:
-                    return "LT / L2";
+                    return MapButton(mode, "LT", "L2", "ZL");
                 case ControllerInput.TriggerRight:
-                    return "RT / R2";
+                    return MapButton(mode, "RT", "R2", "ZR");
                 case ControllerInput.DPadUp:
-                    return "Up";
+                    return "D-Pad Up";
                 case ControllerInput.DPadDown:
-                    return "Down";
+                    return "D-Pad Down";
                 case ControllerInput.DPadLeft:
-                    return "Left";
+                    return "D-Pad Left";
                 case ControllerInput.DPadRight:
-                    return "Right";
+                    return "D-Pad Right";
                 default:
                     return button.ToString();
+            }
+        }
+
+        private static string MapButton(ControllerInputDisplayMode mode, string xboxButton, string psButton, string switchButton)
+        {
+            switch (mode)
+            {
+                case ControllerInputDisplayMode.PS:
+                    return psButton;
+                case ControllerInputDisplayMode.NintendoSwitch:
+                    return switchButton;
+                case ControllerInputDisplayMode.XBOX:
+                default:
+                    return xboxButton;
             }
         }
     }

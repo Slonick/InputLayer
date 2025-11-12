@@ -1,0 +1,349 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region Button Selection & Testing-->
+    <system:String x:Key="InputLayer.DisplayMode">
+        Розкладка кнопок
+    </system:String>
+
+    <system:String x:Key="InputLayer.SelectButton">
+        Виберіть кнопку контролера для комбінацій дій
+    </system:String>
+
+    <system:String x:Key="InputLayer.GuideWarning">
+        Примітка: Кнопка Guide може не завжди визначатися вашою системою. Будь ласка, перевірте, чи працює вона з вашим контролером перед використанням.
+    </system:String>
+
+    <system:String x:Key="InputLayer.Log.Title">
+        Тест вводу кнопок контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.Log.ButtonPressed">
+        Натиснуто кнопку:
+    </system:String>
+    <!--#endregion Button Selection & Testing-->
+
+    <!--#region Controller Actions-->
+    <system:String x:Key="InputLayer.Actions.Title">
+        Дії контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Hint">
+        Налаштуйте комбінації кнопок контролера для виконання користувацьких дій у різних режимах програми.
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Add">
+        Додати дію контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Remove.Hint">
+        Видалити дію контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.AddAction.ItemHint">
+        Додати дію
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.RemoveAction.ItemHint">
+        Видалити дію
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.UpAction.ItemHint">
+        Перемістити дію вгору
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.DownAction.ItemHint">
+        Перемістити дію вниз
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.ItemsHint">
+        Дії виконуватимуться послідовно зверху вниз
+    </system:String>
+    <!--#endregion Controller Actions-->
+
+    <!--#region Mode Tabs-->
+    <system:String x:Key="InputLayer.Tabs.Desktop">
+        Робочий стіл
+    </system:String>
+
+    <system:String x:Key="InputLayer.Tabs.Fullscreen">
+        Повний екран
+    </system:String>
+
+    <system:String x:Key="InputLayer.Tabs.InGame">
+        У грі
+    </system:String>
+    <!--#endregion Mode Tabs-->
+
+    <!--#region General Action Settings-->
+    <system:String x:Key="InputLayer.ButtonPlaceholder">
+        Виберіть кнопку
+    </system:String>
+
+    <system:String x:Key="InputLayer.LongPress">
+        Довге натискання
+    </system:String>
+    <!--#endregion General Action Settings-->
+
+    <!--#region Command Action-->
+    <system:String x:Key="InputLayer.CommandAction.Name">
+        Команда
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.Description">
+        Виконати shell-команду
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.Placeholder">
+        Введіть команду
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleExecutableVisibility.Description">
+        Приховати або показати вікно при виконанні команди
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleOptionalSettingsVisibility.Description">
+        Показати додаткові налаштування
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Title">
+        Робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Placeholder">
+        Виберіть робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Clear">
+        Очистити
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Select">
+        Вибрати
+    </system:String>
+    <!--#endregion Command Action-->
+
+    <!--#region PowerShell Command Action-->
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Name">
+        Команда PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Description">
+        Виконати команду PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Placeholder">
+        Введіть команду PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleExecutableVisibility.Description">
+        Приховати або показати вікно при виконанні команди
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleOptionalSettingsVisibility.Description">
+        Показати додаткові налаштування
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Title">
+        Робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder">
+        Виберіть робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Clear">
+        Очистити
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Select">
+        Вибрати
+    </system:String>
+    <!--#endregion PowerShell Command Action-->
+
+    <!--#region Executable Action-->
+    <system:String x:Key="InputLayer.ExecutableAction.Name">
+        Виконуваний файл
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Description">
+        Запустити виконуваний файл
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.ToggleExecutableVisibility.Description">
+        Приховати або показати вікно при запуску виконуваного файлу
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.ToggleOptionalSettingsVisibility.Description">
+        Показати додаткові налаштування
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Select">
+        Вибрати
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Placeholder">
+        Виберіть виконуваний файл
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Title">
+        Аргументи
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Placeholder">
+        Введіть аргументи командного рядка
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Title">
+        Робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Placeholder">
+        Виберіть робочий каталог
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Select">
+        Вибрати
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Clear">
+        Очистити
+    </system:String>
+    <!--#endregion Executable Action-->
+
+    <!--#region Keyboard Action-->
+    <system:String x:Key="InputLayer.KeyboardAction.Name">
+        Комбінація клавіш
+    </system:String>
+
+    <system:String x:Key="InputLayer.KeyboardAction.Description">
+        Імітувати комбінацію клавіш
+    </system:String>
+
+    <system:String x:Key="InputLayer.KeyboardAction.Placeholder">
+        Натисніть гарячу клавішу
+    </system:String>
+    <!--#endregion Keyboard Action-->
+
+    <!--#region Playnite Action-->
+    <system:String x:Key="InputLayer.PlayniteAction.Name">
+        Playnite
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.Description">
+        Дії програми Playnite
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.Placeholder">
+        Виберіть дію
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.ToggleFullscreen.Name">
+        Перемкнути режим повного екрана
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.ToggleFullscreen.Description">
+        Показати Playnite, якщо приховано, інакше перейти в режим повного екрана
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToFullscreen.Name">
+        Перейти в режим повного екрана
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToFullscreen.Description">
+        Перемкнути Playnite в режим повного екрана
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToDesktop.Name">
+        Перейти в режим робочого столу
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToDesktop.Description">
+        Перемкнути Playnite в режим робочого столу
+    </system:String>
+    <!--#endregion Playnite Action-->
+
+    <!--#region Controller Action-->
+    <system:String x:Key="InputLayer.GameControllerAction.Name">
+        Контролер
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Description">
+        Апаратні дії контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Placeholder">
+        Виберіть дію контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Name">
+        Вібрація
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Description">
+        Активувати вібрацію контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Settings.Duration">
+        Тривалість: {0} мс
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Settings.Intensity">
+        Інтенсивність: {0}
+    </system:String>
+    <!--#endregion Controller Action-->
+
+    <!--#region System Action-->
+    <system:String x:Key="InputLayer.SystemAction.Name">
+        Система
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Description">
+        Системні допоміжні дії
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Placeholder">
+        Виберіть системну дію
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Name">
+        Пауза
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Description">
+        Додати затримку між діями
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Settings.Duration">
+        Тривалість: {0} мс
+    </system:String>
+    <!--#endregion System Action-->
+
+    <!--#region Error Messages-->
+    <system:String x:Key="InputLayer.Error.NoButtonSelected">
+        Будь ласка, виберіть кнопку контролера
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.UnallowedButtonSelected">
+        Вибрана кнопка вже використовується як основна кнопка і не може бути скомбінована сама з собою
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyCommand">
+        Команда не може бути порожньою
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyExecutableFilepath">
+        Будь ласка, виберіть виконуваний файл
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.ExecutableFileNotExist">
+        Вибраний виконуваний файл не існує
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyHotkey">
+        Будь ласка, налаштуйте гарячу клавішу
+    </system:String>
+    <!--#endregion Error Messages-->
+
+</ResourceDictionary>

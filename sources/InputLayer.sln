@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputLayer.IPC", "InputLaye
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputLayer.Keyboard", "InputLayer.Keyboard\InputLayer.Keyboard.csproj", "{22636AE7-6D33-4C0D-A835-8E0E871A3F42}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InputLayer.Settings", "InputLayer.Settings\InputLayer.Settings.csproj", "{A551FDCD-D348-4D39-85CD-14E31D037995}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{22636AE7-6D33-4C0D-A835-8E0E871A3F42}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22636AE7-6D33-4C0D-A835-8E0E871A3F42}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22636AE7-6D33-4C0D-A835-8E0E871A3F42}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A551FDCD-D348-4D39-85CD-14E31D037995}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A551FDCD-D348-4D39-85CD-14E31D037995}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A551FDCD-D348-4D39-85CD-14E31D037995}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A551FDCD-D348-4D39-85CD-14E31D037995}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

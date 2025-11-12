@@ -1,8 +1,5 @@
 ﻿namespace InputLayer.Common.Logging
 {
-    /// <summary>
-    ///     The severity of the log message
-    /// </summary>
     public enum LogLevel
     {
         None = 0,

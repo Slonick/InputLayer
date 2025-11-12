@@ -4,82 +4,80 @@
     {
         None = 0x00,
 
-        // === MOUSE BUTTONS (для полноты, но обычно не используются в клавиатурном вводе) ===
-        LButton = 0x01, // Left mouse button
-        RButton = 0x02, // Right mouse button
-        Cancel = 0x03, // Control-break processing
-        MButton = 0x04, // Middle mouse button
-        XButton1 = 0x05, // X1 mouse button
-        XButton2 = 0x06, // X2 mouse button
+        // === MOUSE BUTTONS ===
+        LButton = 0x01,
+        RButton = 0x02,
+        Cancel = 0x03,
+        MButton = 0x04,
+        XButton1 = 0x05,
+        XButton2 = 0x06,
 
-        // === CONTROL KEYS ===
-        Backspace = 0x08, // BACKSPACE key
-        Tab = 0x09, // TAB key
-        Clear = 0x0C, // CLEAR key
-        Enter = 0x0D, // ENTER key (Return)
+// === CONTROL KEYS ===
+        Backspace = 0x08,
+        Tab = 0x09,
+        Clear = 0x0C,
+        Enter = 0x0D,
 
-        // === MODIFIERS ===
-        Shift = 0x10, // SHIFT key (любая)
-        Control = 0x11, // CTRL key (любая)
-        Alt = 0x12, // ALT key (любая) / MENU
-        Pause = 0x13, // PAUSE key
-        CapsLock = 0x14, // CAPS LOCK key
+// === MODIFIERS ===
+        Shift = 0x10,
+        Control = 0x11,
+        Alt = 0x12,
+        Pause = 0x13,
+        CapsLock = 0x14,
 
-        // === IME KEYS (для азиатских языков) ===
-        Kana = 0x15, // IME Kana mode
-        Hangul = 0x15, // IME Hangul mode (тот же код)
-        ImeOn = 0x16, // IME On
-        Junja = 0x17, // IME Junja mode
-        Final = 0x18, // IME final mode
-        Hanja = 0x19, // IME Hanja mode
-        Kanji = 0x19, // IME Kanji mode (тот же код)
-        ImeOff = 0x1A, // IME Off
+// === IME KEYS ===
+        Kana = 0x15,
+        Hangul = 0x15,
+        ImeOn = 0x16,
+        Junja = 0x17,
+        Final = 0x18,
+        Hanja = 0x19,
+        Kanji = 0x19,
+        ImeOff = 0x1A,
 
-        // === SPECIAL KEYS ===
-        Escape = 0x1B, // ESC key
-        Convert = 0x1C, // IME convert
-        NonConvert = 0x1D, // IME nonconvert
-        Accept = 0x1E, // IME accept
-        ModeChange = 0x1F, // IME mode change request
+// === SPECIAL KEYS ===
+        Escape = 0x1B,
+        Convert = 0x1C,
+        NonConvert = 0x1D,
+        Accept = 0x1E,
+        ModeChange = 0x1F,
 
-        Space = 0x20, // SPACEBAR
+        Space = 0x20,
 
-        // === NAVIGATION ===
-        PageUp = 0x21, // PAGE UP key
-        PageDown = 0x22, // PAGE DOWN key
-        End = 0x23, // END key
-        Home = 0x24, // HOME key
+// === NAVIGATION ===
+        PageUp = 0x21,
+        PageDown = 0x22,
+        End = 0x23,
+        Home = 0x24,
 
-        // === ARROW KEYS ===
-        Left = 0x25, // LEFT ARROW key
-        Up = 0x26, // UP ARROW key
-        Right = 0x27, // RIGHT ARROW key
-        Down = 0x28, // DOWN ARROW key
+// === ARROW KEYS ===
+        Left = 0x25,
+        Up = 0x26,
+        Right = 0x27,
+        Down = 0x28,
 
-        // === ADDITIONAL NAVIGATION ===
-        Select = 0x29, // SELECT key
-        Print = 0x2A, // PRINT key
-        Execute = 0x2B, // EXECUTE key
-        PrintScreen = 0x2C, // PRINT SCREEN key
-        Insert = 0x2D, // INS key
-        Delete = 0x2E, // DEL key
-        Help = 0x2F, // HELP key
+// === ADDITIONAL NAVIGATION ===
+        Select = 0x29,
+        Print = 0x2A,
+        Execute = 0x2B,
+        PrintScreen = 0x2C,
+        Insert = 0x2D,
+        Delete = 0x2E,
+        Help = 0x2F,
 
-        // === NUMBER ROW (0-9) ===
-        D0 = 0x30, // 0 key
-        D1 = 0x31, // 1 key
-        D2 = 0x32, // 2 key
-        D3 = 0x33, // 3 key
-        D4 = 0x34, // 4 key
-        D5 = 0x35, // 5 key
-        D6 = 0x36, // 6 key
-        D7 = 0x37, // 7 key
-        D8 = 0x38, // 8 key
-        D9 = 0x39, // 9 key
+// === NUMBER ROW (0-9) ===
+        D0 = 0x30,
+        D1 = 0x31,
+        D2 = 0x32,
+        D3 = 0x33,
+        D4 = 0x34,
+        D5 = 0x35,
+        D6 = 0x36,
+        D7 = 0x37,
+        D8 = 0x38,
+        D9 = 0x39,
 
-        // 0x3A-0x40 зарезервированы
-
-        // === LETTERS (A-Z) ===
+// === LETTERS (A-Z) ===
         A = 0x41,
         B = 0x42,
         C = 0x43,
@@ -107,33 +105,32 @@
         Y = 0x59,
         Z = 0x5A,
 
-        // === WINDOWS KEYS ===
-        LeftWin = 0x5B, // Left Windows key
-        RightWin = 0x5C, // Right Windows key
-        Apps = 0x5D, // Applications key (контекстное меню)
+// === WINDOWS KEYS ===
+        LeftWin = 0x5B,
+        RightWin = 0x5C,
+        Apps = 0x5D,
 
-        // 0x5E зарезервирован
-        Sleep = 0x5F, // Computer Sleep key
+        Sleep = 0x5F,
 
-        // === NUMERIC KEYPAD ===
-        NumPad0 = 0x60, // Numeric keypad 0
-        NumPad1 = 0x61, // Numeric keypad 1
-        NumPad2 = 0x62, // Numeric keypad 2
-        NumPad3 = 0x63, // Numeric keypad 3
-        NumPad4 = 0x64, // Numeric keypad 4
-        NumPad5 = 0x65, // Numeric keypad 5
-        NumPad6 = 0x66, // Numeric keypad 6
-        NumPad7 = 0x67, // Numeric keypad 7
-        NumPad8 = 0x68, // Numeric keypad 8
-        NumPad9 = 0x69, // Numeric keypad 9
-        Multiply = 0x6A, // Multiply key (*)
-        Add = 0x6B, // Add key (+)
-        Separator = 0x6C, // Separator key
-        Subtract = 0x6D, // Subtract key (-)
-        Decimal = 0x6E, // Decimal key (.)
-        Divide = 0x6F, // Divide key (/)
+// === NUMERIC KEYPAD ===
+        NumPad0 = 0x60,
+        NumPad1 = 0x61,
+        NumPad2 = 0x62,
+        NumPad3 = 0x63,
+        NumPad4 = 0x64,
+        NumPad5 = 0x65,
+        NumPad6 = 0x66,
+        NumPad7 = 0x67,
+        NumPad8 = 0x68,
+        NumPad9 = 0x69,
+        Multiply = 0x6A,
+        Add = 0x6B,
+        Separator = 0x6C,
+        Subtract = 0x6D,
+        Decimal = 0x6E,
+        Divide = 0x6F,
 
-        // === FUNCTION KEYS (F1-F24) ===
+// === FUNCTION KEYS (F1-F24) ===
         F1 = 0x70,
         F2 = 0x71,
         F3 = 0x72,
@@ -159,114 +156,89 @@
         F23 = 0x86,
         F24 = 0x87,
 
-        // 0x88-0x8F не назначены
+// === LOCK KEYS ===
+        NumLock = 0x90,
+        ScrollLock = 0x91,
 
-        // === LOCK KEYS ===
-        NumLock = 0x90, // NUM LOCK key
-        ScrollLock = 0x91, // SCROLL LOCK key
+// === LEFT/RIGHT MODIFIERS ===
+        LeftShift = 0xA0,
+        RightShift = 0xA1,
+        LeftControl = 0xA2,
+        RightControl = 0xA3,
+        LeftAlt = 0xA4,
+        RightAlt = 0xA5,
 
-        // === OEM SPECIFIC ===
-        // 0x92-0x96 OEM specific
+// === BROWSER KEYS ===
+        BrowserBack = 0xA6,
+        BrowserForward = 0xA7,
+        BrowserRefresh = 0xA8,
+        BrowserStop = 0xA9,
+        BrowserSearch = 0xAA,
+        BrowserFavorites = 0xAB,
+        BrowserHome = 0xAC,
 
-        // 0x97-0x9F не назначены
+// === MEDIA KEYS ===
+        VolumeMute = 0xAD,
+        VolumeDown = 0xAE,
+        VolumeUp = 0xAF,
+        MediaNextTrack = 0xB0,
+        MediaPrevTrack = 0xB1,
+        MediaStop = 0xB2,
+        MediaPlayPause = 0xB3,
 
-        // === LEFT/RIGHT MODIFIERS (для различения левой/правой клавиши) ===
-        LeftShift = 0xA0, // Left SHIFT key
-        RightShift = 0xA1, // Right SHIFT key
-        LeftControl = 0xA2, // Left CONTROL key
-        RightControl = 0xA3, // Right CONTROL key
-        LeftAlt = 0xA4, // Left MENU key (Alt)
-        RightAlt = 0xA5, // Right MENU key (Alt)
+// === LAUNCH KEYS ===
+        LaunchMail = 0xB4,
+        LaunchMediaSelect = 0xB5,
+        LaunchApp1 = 0xB6,
+        LaunchApp2 = 0xB7,
 
-        // === BROWSER KEYS ===
-        BrowserBack = 0xA6, // Browser Back key
-        BrowserForward = 0xA7, // Browser Forward key
-        BrowserRefresh = 0xA8, // Browser Refresh key
-        BrowserStop = 0xA9, // Browser Stop key
-        BrowserSearch = 0xAA, // Browser Search key
-        BrowserFavorites = 0xAB, // Browser Favorites key
-        BrowserHome = 0xAC, // Browser Start and Home key
+// === OEM KEYS ===
+        OemSemicolon = 0xBA,
+        Oem1 = 0xBA,
 
-        // === MEDIA KEYS ===
-        VolumeMute = 0xAD, // Volume Mute key
-        VolumeDown = 0xAE, // Volume Down key
-        VolumeUp = 0xAF, // Volume Up key
-        MediaNextTrack = 0xB0, // Next Track key
-        MediaPrevTrack = 0xB1, // Previous Track key
-        MediaStop = 0xB2, // Stop Media key
-        MediaPlayPause = 0xB3, // Play/Pause Media key
+        OemPlus = 0xBB,
 
-        // === LAUNCH KEYS ===
-        LaunchMail = 0xB4, // Start Mail key
-        LaunchMediaSelect = 0xB5, // Select Media key
-        LaunchApp1 = 0xB6, // Start Application 1 key
-        LaunchApp2 = 0xB7, // Start Application 2 key
+        OemComma = 0xBC,
 
-        // 0xB8-0xB9 зарезервированы
+        OemMinus = 0xBD,
 
-        // === OEM KEYS (символьные клавиши, зависят от раскладки) ===
-        OemSemicolon = 0xBA, // ;: key (US keyboard)
-        Oem1 = 0xBA, // Альтернативное название
+        OemPeriod = 0xBE,
 
-        OemPlus = 0xBB, // =+ key
+        OemQuestion = 0xBF,
+        Oem2 = 0xBF,
 
-        OemComma = 0xBC, // ,< key
+        OemTilde = 0xC0,
+        Oem3 = 0xC0,
 
-        OemMinus = 0xBD, // -_ key
+        OemOpenBrackets = 0xDB,
+        Oem4 = 0xDB,
 
-        OemPeriod = 0xBE, // .> key
+        OemPipe = 0xDC,
+        Oem5 = 0xDC,
 
-        OemQuestion = 0xBF, // /? key
-        Oem2 = 0xBF, // Альтернативное название
+        OemCloseBrackets = 0xDD,
+        Oem6 = 0xDD,
 
-        OemTilde = 0xC0, // `~ key
-        Oem3 = 0xC0, // Альтернативное название
+        OemQuotes = 0xDE,
+        Oem7 = 0xDE,
 
-        // 0xC1-0xD7 зарезервированы
+        Oem8 = 0xDF,
 
-        // 0xD8-0xDA не назначены
+        OemBackslash = 0xE2,
+        Oem102 = 0xE2,
 
-        OemOpenBrackets = 0xDB, // [{ key
-        Oem4 = 0xDB, // Альтернативное название
+        ProcessKey = 0xE5,
 
-        OemPipe = 0xDC, // \| key
-        Oem5 = 0xDC, // Альтернативное название
+        Packet = 0xE7,
 
-        OemCloseBrackets = 0xDD, // ]} key
-        Oem6 = 0xDD, // Альтернативное название
-
-        OemQuotes = 0xDE, // '" key
-        Oem7 = 0xDE, // Альтернативное название
-
-        Oem8 = 0xDF, // Различные клавиши
-
-        // 0xE0 зарезервирован
-
-        // 0xE1 OEM specific
-
-        OemBackslash = 0xE2, // <> или \| на RT 102-key keyboard
-        Oem102 = 0xE2, // Альтернативное название
-
-        // 0xE3-0xE4 OEM specific
-
-        ProcessKey = 0xE5, // IME PROCESS key
-
-        // 0xE6 OEM specific
-
-        Packet = 0xE7, // Used to pass Unicode characters
-
-        // 0xE8 не назначен
-
-        // 0xE9-0xF5 OEM specific
-
-        Attn = 0xF6, // Attn key
-        Crsel = 0xF7, // CrSel key
-        Exsel = 0xF8, // ExSel key
-        EraseEof = 0xF9, // Erase EOF key
-        Play = 0xFA, // Play key
-        Zoom = 0xFB, // Zoom key
-        NoName = 0xFC, // Reserved
-        Pa1 = 0xFD, // PA1 key
-        OemClear = 0xFE // Clear key
+        Attn = 0xF6,
+        Crsel = 0xF7,
+        Exsel = 0xF8,
+        EraseEof = 0xF9,
+        Play = 0xFA,
+        Zoom = 0xFB,
+        NoName = 0xFC,
+        Pa1 = 0xFD,
+        OemClear = 0xFE
     }
 }

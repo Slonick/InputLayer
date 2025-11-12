@@ -19,9 +19,11 @@ namespace InputLayer.Common.Logging.Layouts
             builder.Append(result);
         }
 
-        private Assembly GetAssembly() => Assembly.GetEntryAssembly();
+        private Assembly GetAssembly()
+            => Assembly.GetEntryAssembly();
 
-        private string GetName(Assembly assembly) => this.GetNameFromAssembly(assembly ?? this.GetAssembly());
+        private string GetName(Assembly assembly)
+            => this.GetNameFromAssembly(assembly ?? this.GetAssembly());
 
         private string GetNameFromAssembly(Assembly assembly)
         {

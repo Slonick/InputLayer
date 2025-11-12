@@ -15,9 +15,12 @@ namespace InputLayer.IPC
         private volatile bool _isDisposed;
         private Thread _listenThread;
         private StreamWriter _writer;
+
         public event Action Connected;
+
         public event Action Disconnected;
-        public event Action<IIPCMessage> MessageReceived;
+
+        public event Action<IPCMessage> MessageReceived;
 
         protected abstract ILogger Logger { get; }
 
@@ -57,17 +60,22 @@ namespace InputLayer.IPC
             _listenThread?.Join(300);
         }
 
-        public void Send(IIPCMessage message)
+        public void Send(IPCMessage message)
         {
             var payload = IPCSerializer.Serialize(message);
 
-            this.Logger.Trace($"Sending message: {payload}");
+            var logBuilder = new StringBuilder()
+                             .AppendLine("Sending message:")
+                             .AppendLine(payload);
+
+            this.Logger.Trace(logBuilder.ToString());
 
             _writer.WriteLine(payload);
             _writer.Flush();
         }
 
         protected abstract void WaitForConnection();
+
         protected abstract Task WaitForConnectionAsync(CancellationToken cancellationToken);
 
         private void Cleanup()
@@ -100,7 +108,11 @@ namespace InputLayer.IPC
                     var messageData = reader.ReadLine();
                     if (!string.IsNullOrWhiteSpace(messageData))
                     {
-                        this.Logger.Trace($"Received message: {messageData}");
+                        var logBuilder = new StringBuilder()
+                                         .AppendLine("Received message:")
+                                         .AppendLine(messageData);
+
+                        this.Logger.Trace(logBuilder.ToString());
                         this.MessageReceived?.Invoke(IPCSerializer.Deserialize(messageData));
                     }
 

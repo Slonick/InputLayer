@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using InputLayer.Common.Extensions;
 using InputLayer.Common.Logging;
 
 namespace InputLayer.Common.Models.Actions
 {
-    public class PowerShellCommandAction : ObservableObject, IExecutableAction
+    public class PowerShellCommandAction : ObservableObject, IExecutableActionWithParams
     {
         private readonly ILogger _logger = LogManager.Default.GetCurrentClassLogger();
 
         private string _command;
         private bool _isHidden = true;
+        private bool _isOpenOptionalSettings;
+        private string _workingDirectory;
+
+        /// <inheritdoc/>
+        public bool HasOptionalSettings => true;
 
         public string Command
         {
@@ -22,6 +28,19 @@ namespace InputLayer.Common.Models.Actions
         {
             get => _isHidden;
             set => this.SetValue(ref _isHidden, value);
+        }
+
+        /// <inheritdoc/>
+        public bool IsOpenOptionalSettings
+        {
+            get => _isOpenOptionalSettings;
+            set => this.SetValue(ref _isOpenOptionalSettings, value);
+        }
+
+        public string WorkingDirectory
+        {
+            get => _workingDirectory;
+            set => this.SetValue(ref _workingDirectory, value);
         }
 
         /// <inheritdoc/>
@@ -39,6 +58,11 @@ namespace InputLayer.Common.Models.Actions
                     CreateNoWindow = this.IsHidden,
                     WindowStyle = this.IsHidden ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal
                 };
+
+                if (this.WorkingDirectory.IsNotNullOrWhiteSpace())
+                {
+                    startInfo.WorkingDirectory = this.WorkingDirectory;
+                }
 
                 using (var process = Process.Start(startInfo))
                 {
@@ -82,6 +106,7 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"PowerShell Command: {this.Command}";
+        public override string ToString()
+            => $"PowerShell Command: {this.Command}";
     }
 }

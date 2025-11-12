@@ -39,9 +39,11 @@ namespace InputLayer.Common.Logging.Layouts
             return version;
         }
 
-        private Assembly GetAssembly() => Assembly.GetEntryAssembly();
+        private Assembly GetAssembly()
+            => Assembly.GetEntryAssembly();
 
-        private string GetVersion(Assembly assembly) => this.GetVersionFromAssembly(assembly ?? this.GetAssembly());
+        private string GetVersion(Assembly assembly)
+            => this.GetVersionFromAssembly(assembly ?? this.GetAssembly());
 
         private string GetVersionFromAssembly(Assembly assembly)
         {

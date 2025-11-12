@@ -5,7 +5,7 @@ using InputLayer.Keyboard.Native;
 
 namespace InputLayer.Keyboard
 {
-    public class KeyboardSimulator
+    public static class KeyboardSimulator
     {
         public static void KeyDown(Keys key)
         {
@@ -48,19 +48,16 @@ namespace InputLayer.Keyboard
 
         public static void KeyPress(Modifiers[] modifiers, Keys key, int delayMs = 10)
         {
-            // Нажимаем все модификаторы
             foreach (var mod in modifiers)
             {
                 ModifierDown(mod);
                 Thread.Sleep(5);
             }
 
-            // Нажимаем основную клавишу
             KeyDown(key);
             Thread.Sleep(delayMs);
             KeyUp(key);
 
-            // Отпускаем модификаторы в обратном порядке
             for (var i = modifiers.Length - 1; i >= 0; i--)
             {
                 Thread.Sleep(5);
@@ -169,7 +166,6 @@ namespace InputLayer.Keyboard
         {
             needShift = false;
 
-            // Буквы
             if (c >= 'a' && c <= 'z')
             {
                 return (Keys)((int)Keys.A + (c - 'a'));
@@ -181,13 +177,11 @@ namespace InputLayer.Keyboard
                 return (Keys)((int)Keys.A + (c - 'A'));
             }
 
-            // Цифры
             if (c >= '0' && c <= '9')
             {
                 return (Keys)((int)Keys.D0 + (c - '0'));
             }
 
-            // Специальные символы
             switch (c)
             {
                 case ' ':
@@ -198,7 +192,6 @@ namespace InputLayer.Keyboard
                 case '\n':
                     return Keys.Enter;
 
-                // Символы с Shift
                 case '!':
                     needShift = true;
                     return Keys.D1;
@@ -235,25 +228,26 @@ namespace InputLayer.Keyboard
             }
         }
 
+        private static bool IsExtendedKey(Keys key)
+            => key == Keys.RightAlt ||
+               key == Keys.RightControl ||
+               key == Keys.Insert ||
+               key == Keys.Delete ||
+               key == Keys.Home ||
+               key == Keys.End ||
+               key == Keys.PageUp ||
+               key == Keys.PageDown ||
+               key == Keys.Left ||
+               key == Keys.Up ||
+               key == Keys.Right ||
+               key == Keys.Down ||
+               key == Keys.NumLock ||
+               key == Keys.PrintScreen ||
+               key == Keys.Divide;
 
-        private static bool IsExtendedKey(Keys key) => key == Keys.RightAlt ||
-                                                       key == Keys.RightControl ||
-                                                       key == Keys.Insert ||
-                                                       key == Keys.Delete ||
-                                                       key == Keys.Home ||
-                                                       key == Keys.End ||
-                                                       key == Keys.PageUp ||
-                                                       key == Keys.PageDown ||
-                                                       key == Keys.Left ||
-                                                       key == Keys.Up ||
-                                                       key == Keys.Right ||
-                                                       key == Keys.Down ||
-                                                       key == Keys.NumLock ||
-                                                       key == Keys.PrintScreen ||
-                                                       key == Keys.Divide;
-
-        private static bool IsExtendedModifier(Modifiers modifier) => modifier == Modifiers.RightShift ||
-                                                                      modifier == Modifiers.RightControl ||
-                                                                      modifier == Modifiers.RightAlt;
+        private static bool IsExtendedModifier(Modifiers modifier)
+            => modifier == Modifiers.RightShift ||
+               modifier == Modifiers.RightControl ||
+               modifier == Modifiers.RightAlt;
     }
 }

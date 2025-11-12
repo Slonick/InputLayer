@@ -4,6 +4,6 @@
     {
         ToggleFullscreen,
         GoToFullscreen,
-        GoToDesktop,
+        GoToDesktop
     }
 }

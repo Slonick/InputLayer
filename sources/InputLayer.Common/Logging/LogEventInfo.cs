@@ -14,15 +14,25 @@ namespace InputLayer.Common.Logging
         }
 
         public LogEventInfo() { }
+
         public Exception Exception { get; }
+
         public LogLevel Level { get; }
+
         public string Message { get; }
+
         public object[] Parameters { get; }
+
         public Assembly Assembly { get; set; }
+
         public string CallerFilePath { get; set; }
+
         public int CallerLineNumber { get; set; }
+
         public string CallerMemberName { get; set; }
+
         public string LoggerName { get; set; }
+
         public DateTimeOffset TimeStamp { get; set; }
     }
 }

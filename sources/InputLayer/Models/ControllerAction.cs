@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using InputLayer.Common.Infrastructures;
-using Newtonsoft.Json;
 using Playnite.SDK;
 using ILogger = InputLayer.Common.Logging.ILogger;
 using LogManager = InputLayer.Common.Logging.LogManager;
@@ -27,16 +26,12 @@ namespace InputLayer.Models
             this.DownControllerActionItemCommand = new RelayCommand<ControllerActionItem>(this.DownControllerActionItem, this.DownControllerActionItemCanExecute);
         }
 
-        [JsonIgnore]
         public ICommand AddControllerActionItemCommand { get; }
 
-        [JsonIgnore]
         public ICommand DownControllerActionItemCommand { get; }
 
-        [JsonIgnore]
         public ICommand RemoveControllerActionItemCommand { get; }
 
-        [JsonIgnore]
         public ICommand UpControllerActionItemCommand { get; }
 
         public ObservableCollection<ControllerActionItem> Actions
@@ -59,13 +54,14 @@ namespace InputLayer.Models
             set => this.SetValue(ref _mode, value);
         }
 
-        internal static ControllerAction Default() => new ControllerAction
-        {
-            Actions = new ObservableCollection<ControllerActionItem>
+        internal static ControllerAction Default()
+            => new ControllerAction
             {
-                ControllerActionItem.Default()
-            }
-        };
+                Actions = new ObservableCollection<ControllerActionItem>
+                {
+                    ControllerActionItem.Default()
+                }
+            };
 
         private void AddControllerActionItem(ControllerActionItem item)
         {

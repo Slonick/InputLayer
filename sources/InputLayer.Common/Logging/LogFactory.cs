@@ -36,7 +36,8 @@ namespace InputLayer.Common.Logging
 
         public LoggerConfig Config { get; set; }
 
-        public ILogger GetLogger(string name) => this.GetLoggerThreadSafe(name, Logger.DefaultLoggerType);
+        public ILogger GetLogger(string name)
+            => this.GetLoggerThreadSafe(name, Logger.DefaultLoggerType);
 
         public IDictionary<string, ILogLayout> GetLogLayouts()
         {

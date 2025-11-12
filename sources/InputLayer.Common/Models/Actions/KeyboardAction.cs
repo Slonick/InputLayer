@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using InputLayer.Keyboard;
 
@@ -7,7 +8,7 @@ namespace InputLayer.Common.Models.Actions
     public class KeyboardAction : ObservableObject, IAction
     {
         private Keys _key;
-        private Modifiers[] _modifiers;
+        private Modifiers[] _modifiers = Array.Empty<Modifiers>();
 
         public Keys Key
         {
@@ -24,10 +25,17 @@ namespace InputLayer.Common.Models.Actions
         /// <inheritdoc/>
         public void Execute(object obj)
         {
+            if (this.Modifiers is null || !this.Modifiers.Any())
+            {
+                KeyboardSimulator.KeyPress(this.Key);
+                return;
+            }
+
             KeyboardSimulator.KeyPress(this.Modifiers, this.Key);
         }
 
         /// <inheritdoc/>
-        public override string ToString() => this.Modifiers.Any() ? $"Keyboard: {string.Join("+", this.Modifiers)}+{this.Key}" : $"Keyboard: {this.Key}";
+        public override string ToString()
+            => this.Modifiers?.Any() == true ? $"Keyboard: {string.Join("+", this.Modifiers)}+{this.Key}" : $"Keyboard: {this.Key}";
     }
 }

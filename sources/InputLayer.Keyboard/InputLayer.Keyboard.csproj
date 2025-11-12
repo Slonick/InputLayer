@@ -39,6 +39,7 @@
     <ItemGroup>
         <Compile Include="KeyboardSimulator.cs"/>
         <Compile Include="Keys.cs"/>
+        <Compile Include="LowLevelKeyboardHook.cs"/>
         <Compile Include="Modifiers.cs"/>
         <Compile Include="Native\NativeConstants.cs"/>
         <Compile Include="Native\NativeMethods.cs"/>

@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 // ReSharper disable InconsistentNaming
 namespace InputLayer.Keyboard.Native
 {
-    internal class NativeStructures
+    internal static class NativeStructures
     {
         [StructLayout(LayoutKind.Sequential)]
         internal struct INPUT
@@ -41,6 +41,16 @@ namespace InputLayer.Keyboard.Native
             public uint mouseData;
             public uint dwFlags;
             public uint time;
+            public IntPtr dwExtraInfo;
+        }
+
+        [StructLayout(LayoutKind.Sequential)]
+        internal struct KBDLLHOOKSTRUCT
+        {
+            public int vkCode;
+            public int scanCode;
+            public int flags;
+            public int time;
             public IntPtr dwExtraInfo;
         }
     }

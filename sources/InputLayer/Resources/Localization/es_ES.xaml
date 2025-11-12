@@ -1,0 +1,349 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:system="clr-namespace:System;assembly=mscorlib">
+
+    <!--#region Button Selection & Testing-->
+    <system:String x:Key="InputLayer.DisplayMode">
+        Disposición de botones
+    </system:String>
+
+    <system:String x:Key="InputLayer.SelectButton">
+        Selecciona el botón del mando para las combinaciones de acciones
+    </system:String>
+
+    <system:String x:Key="InputLayer.GuideWarning">
+        Nota: El botón Guía puede no ser detectado siempre por tu sistema. Por favor, prueba si funciona con tu mando antes de usarlo.
+    </system:String>
+
+    <system:String x:Key="InputLayer.Log.Title">
+        Prueba de entrada de botones del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.Log.ButtonPressed">
+        Botón presionado:
+    </system:String>
+    <!--#endregion Button Selection & Testing-->
+
+    <!--#region Controller Actions-->
+    <system:String x:Key="InputLayer.Actions.Title">
+        Acciones del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Hint">
+        Configura combinaciones de botones del mando para activar acciones personalizadas en diferentes modos de aplicación.
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Add">
+        Añadir acción del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.Remove.Hint">
+        Eliminar acción del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.AddAction.ItemHint">
+        Añadir acción
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.RemoveAction.ItemHint">
+        Eliminar acción
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.UpAction.ItemHint">
+        Mover acción arriba
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.DownAction.ItemHint">
+        Mover acción abajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.Actions.ItemsHint">
+        Las acciones se ejecutarán secuencialmente de arriba a abajo
+    </system:String>
+    <!--#endregion Controller Actions-->
+
+    <!--#region Mode Tabs-->
+    <system:String x:Key="InputLayer.Tabs.Desktop">
+        Escritorio
+    </system:String>
+
+    <system:String x:Key="InputLayer.Tabs.Fullscreen">
+        Pantalla completa
+    </system:String>
+
+    <system:String x:Key="InputLayer.Tabs.InGame">
+        En juego
+    </system:String>
+    <!--#endregion Mode Tabs-->
+
+    <!--#region General Action Settings-->
+    <system:String x:Key="InputLayer.ButtonPlaceholder">
+        Seleccionar botón
+    </system:String>
+
+    <system:String x:Key="InputLayer.LongPress">
+        Pulsación larga
+    </system:String>
+    <!--#endregion General Action Settings-->
+
+    <!--#region Command Action-->
+    <system:String x:Key="InputLayer.CommandAction.Name">
+        Comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.Description">
+        Ejecutar un comando de shell
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.Placeholder">
+        Introducir comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleExecutableVisibility.Description">
+        Ocultar o mostrar la ventana al ejecutar el comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.ToggleOptionalSettingsVisibility.Description">
+        Mostrar configuración adicional
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Title">
+        Directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Placeholder">
+        Seleccionar directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Clear">
+        Limpiar
+    </system:String>
+
+    <system:String x:Key="InputLayer.CommandAction.WorkingDirectory.Select">
+        Seleccionar
+    </system:String>
+    <!--#endregion Command Action-->
+
+    <!--#region PowerShell Command Action-->
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Name">
+        Comando PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Description">
+        Ejecutar un comando de PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.Placeholder">
+        Introducir comando PowerShell
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleExecutableVisibility.Description">
+        Ocultar o mostrar la ventana al ejecutar el comando
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.ToggleOptionalSettingsVisibility.Description">
+        Mostrar configuración adicional
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Title">
+        Directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder">
+        Seleccionar directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Clear">
+        Limpiar
+    </system:String>
+
+    <system:String x:Key="InputLayer.PowerShellCommandAction.WorkingDirectory.Select">
+        Seleccionar
+    </system:String>
+    <!--#endregion PowerShell Command Action-->
+
+    <!--#region Executable Action-->
+    <system:String x:Key="InputLayer.ExecutableAction.Name">
+        Ejecutable
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Description">
+        Iniciar un archivo ejecutable
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.ToggleExecutableVisibility.Description">
+        Ocultar o mostrar la ventana al iniciar el ejecutable
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.ToggleOptionalSettingsVisibility.Description">
+        Mostrar configuración adicional
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Select">
+        Seleccionar
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Placeholder">
+        Seleccionar ejecutable
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Title">
+        Argumentos
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.Arguments.Placeholder">
+        Introducir argumentos de línea de comandos
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Title">
+        Directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Placeholder">
+        Seleccionar directorio de trabajo
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Select">
+        Seleccionar
+    </system:String>
+
+    <system:String x:Key="InputLayer.ExecutableAction.WorkingDirectory.Clear">
+        Limpiar
+    </system:String>
+    <!--#endregion Executable Action-->
+
+    <!--#region Keyboard Action-->
+    <system:String x:Key="InputLayer.KeyboardAction.Name">
+        Atajo de teclado
+    </system:String>
+
+    <system:String x:Key="InputLayer.KeyboardAction.Description">
+        Simular un atajo de teclado
+    </system:String>
+
+    <system:String x:Key="InputLayer.KeyboardAction.Placeholder">
+        Presionar combinación de teclas
+    </system:String>
+    <!--#endregion Keyboard Action-->
+
+    <!--#region Playnite Action-->
+    <system:String x:Key="InputLayer.PlayniteAction.Name">
+        Playnite
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.Description">
+        Acciones de la aplicación Playnite
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.Placeholder">
+        Seleccionar acción
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.ToggleFullscreen.Name">
+        Alternar modo de pantalla completa
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.ToggleFullscreen.Description">
+        Mostrar Playnite si está oculto, de lo contrario cambiar a modo de pantalla completa
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToFullscreen.Name">
+        Cambiar a modo de pantalla completa
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToFullscreen.Description">
+        Cambiar Playnite a modo de pantalla completa
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToDesktop.Name">
+        Cambiar a modo de escritorio
+    </system:String>
+
+    <system:String x:Key="InputLayer.PlayniteAction.GoToDesktop.Description">
+        Cambiar Playnite a modo de escritorio
+    </system:String>
+    <!--#endregion Playnite Action-->
+
+    <!--#region Controller Action-->
+    <system:String x:Key="InputLayer.GameControllerAction.Name">
+        Mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Description">
+        Acciones de hardware del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Placeholder">
+        Seleccionar acción del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Name">
+        Vibración
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Description">
+        Activar vibración del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Settings.Duration">
+        Duración: {0} ms
+    </system:String>
+
+    <system:String x:Key="InputLayer.GameControllerAction.Rumble.Settings.Intensity">
+        Intensidad: {0}
+    </system:String>
+    <!--#endregion Controller Action-->
+
+    <!--#region System Action-->
+    <system:String x:Key="InputLayer.SystemAction.Name">
+        Sistema
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Description">
+        Acciones de utilidad del sistema
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Placeholder">
+        Seleccionar acción del sistema
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Name">
+        Pausa
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Description">
+        Añadir un retardo entre acciones
+    </system:String>
+
+    <system:String x:Key="InputLayer.SystemAction.Pause.Settings.Duration">
+        Duración: {0} ms
+    </system:String>
+    <!--#endregion System Action-->
+
+    <!--#region Error Messages-->
+    <system:String x:Key="InputLayer.Error.NoButtonSelected">
+        Por favor, selecciona un botón del mando
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.UnallowedButtonSelected">
+        El botón seleccionado ya se usa como botón principal y no puede combinarse consigo mismo
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyCommand">
+        El comando no puede estar vacío
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyExecutableFilepath">
+        Por favor, selecciona un archivo ejecutable
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.ExecutableFileNotExist">
+        El archivo ejecutable seleccionado no existe
+    </system:String>
+
+    <system:String x:Key="InputLayer.Error.EmptyHotkey">
+        Por favor, configura un atajo de teclado
+    </system:String>
+    <!--#endregion Error Messages-->
+
+</ResourceDictionary>

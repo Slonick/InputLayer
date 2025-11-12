@@ -1,0 +1,79 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:actions="clr-namespace:InputLayer.Common.Models.Actions;assembly=InputLayer.Common"
+                    xmlns:controls="clr-namespace:InputLayer.Controls"
+                    xmlns:converters="clr-namespace:InputLayer.Converters"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:me="clr-namespace:InputLayer.MarkupExtensions"
+                    xmlns:views="clr-namespace:InputLayer.Views"
+                    mc:Ignorable="d">
+
+    <DataTemplate x:Key="PowerShellCommandActionSettings" DataType="{x:Type actions:PowerShellCommandAction}">
+        <controls:StackPanelWithGap HorizontalAlignment="Stretch"
+                                    Gap="10"
+                                    Orientation="Vertical"
+                                    Visibility="{Binding IsOpenOptionalSettings,
+                                                         Converter={converters:BooleanToVisibilityConverter}}">
+
+            <controls:GridWithGap ColumnGap="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <HeaderedContentControl Grid.Column="0" Header="{me:LocalizationBinding Key=InputLayer.PowerShellCommandAction.WorkingDirectory.Title}">
+                    <controls:PlaceholderControl IsContentFocused="{Binding ElementName=WorkingDirectoryTextBox,
+                                                                            Path=IsFocused}"
+                                                 IsEmpty="{Binding ElementName=WorkingDirectoryTextBox,
+                                                                   Path=Text,
+                                                                   Converter={converters:TextToBooleanConverter}}"
+                                                 Placeholder="{me:LocalizationBinding Key=InputLayer.PowerShellCommandAction.WorkingDirectory.Placeholder}">
+                        <TextBox x:Name="WorkingDirectoryTextBox"
+                                 MinHeight="28"
+                                 VerticalContentAlignment="Center"
+                                 Text="{Binding WorkingDirectory,
+                                                UpdateSourceTrigger=PropertyChanged}" />
+                    </controls:PlaceholderControl>
+                </HeaderedContentControl>
+
+                <controls:StackPanelWithGap Grid.Column="1"
+                                            Height="28"
+                                            VerticalAlignment="Bottom"
+                                            Gap="10"
+                                            Orientation="Horizontal">
+                    <!--  ReSharper disable Xaml.BindingWithContextNotResolved  -->
+                    <Button Command="{Binding DataContext.ClearWorkingDirectoryCommand,
+                                              RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
+                            CommandParameter="{Binding Path=.,
+                                                       Mode=TwoWay}"
+                            ToolTip="{me:LocalizationBinding Key=InputLayer.PowerShellCommandAction.WorkingDirectory.Clear}">
+                        <Path Width="16"
+                              Height="16"
+                              Data="{DynamicResource BackspaceGeometry}"
+                              Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
+                                             Path=Foreground}"
+                              Stretch="Uniform" />
+                    </Button>
+
+                    <Button Command="{Binding DataContext.OpenWorkingDirectoryCommand,
+                                              RelativeSource={RelativeSource AncestorType={x:Type views:InputLayerSettingsView}}}"
+                            CommandParameter="{Binding Path=.,
+                                                       Mode=TwoWay}"
+                            ToolTip="{me:LocalizationBinding Key=InputLayer.PowerShellCommandAction.WorkingDirectory.Select}">
+                        <Path Width="16"
+                              Height="16"
+                              Data="{DynamicResource OpenGeometry}"
+                              Fill="{Binding RelativeSource={RelativeSource AncestorType=Button},
+                                             Path=Foreground}"
+                              Stretch="Uniform" />
+                    </Button>
+                    <!--  ReSharper restore Xaml.BindingWithContextNotResolved  -->
+
+                </controls:StackPanelWithGap>
+            </controls:GridWithGap>
+
+        </controls:StackPanelWithGap>
+    </DataTemplate>
+
+</ResourceDictionary>

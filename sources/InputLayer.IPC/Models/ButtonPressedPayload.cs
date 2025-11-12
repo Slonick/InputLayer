@@ -1,8 +1,9 @@
-﻿using InputLayer.Common.Infrastructures;
+﻿using System.Xml.Serialization;
+using InputLayer.Common.Infrastructures;
 
 namespace InputLayer.IPC.Models
 {
-    public class ButtonPressedMessage : IIPCMessage
+    public class ButtonPressedMessage : IPCMessage
     {
         public ButtonPressedMessage() { }
 
@@ -11,9 +12,11 @@ namespace InputLayer.IPC.Models
             this.Button = button;
         }
 
+        [XmlAttribute]
         public ControllerInput Button { get; set; }
 
         /// <inheritdoc/>
-        public override string ToString() => $"Button pressed: {this.Button}";
+        public override string ToString()
+            => $"Button pressed: {this.Button}";
     }
 }

@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
+using InputLayer.Common.Extensions;
 using InputLayer.Common.Logging;
 
 namespace InputLayer.Common.Models.Actions
 {
-    public class ExecutableAction : ObservableObject, IExecutableAction
+    public class ExecutableAction : ObservableObject, IExecutableActionWithParams
     {
         private readonly ILogger _logger = LogManager.Default.GetCurrentClassLogger();
 
         private string _arguments;
         private string _fileName;
         private bool _isHidden = true;
+        private bool _isOpenOptionalSettings;
+        private string _workingDirectory;
+
+        /// <inheritdoc/>
+        public bool HasOptionalSettings => true;
 
         public string Arguments
         {
@@ -33,6 +39,19 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
+        public bool IsOpenOptionalSettings
+        {
+            get => _isOpenOptionalSettings;
+            set => this.SetValue(ref _isOpenOptionalSettings, value);
+        }
+
+        public string WorkingDirectory
+        {
+            get => _workingDirectory;
+            set => this.SetValue(ref _workingDirectory, value);
+        }
+
+        /// <inheritdoc/>
         public void Execute(object obj)
         {
             try
@@ -40,7 +59,6 @@ namespace InputLayer.Common.Models.Actions
                 var startInfo = new ProcessStartInfo
                 {
                     FileName = this.FileName,
-                    Arguments = this.Arguments,
                     UseShellExecute = false,
                     CreateNoWindow = this.IsHidden,
                     WindowStyle = this.IsHidden ? ProcessWindowStyle.Hidden : ProcessWindowStyle.Normal,
@@ -50,6 +68,16 @@ namespace InputLayer.Common.Models.Actions
                     StandardOutputEncoding = Encoding.UTF8,
                     StandardErrorEncoding = Encoding.UTF8
                 };
+
+                if (this.WorkingDirectory.IsNotNullOrWhiteSpace())
+                {
+                    startInfo.WorkingDirectory = this.WorkingDirectory;
+                }
+
+                if (this.Arguments.IsNotNullOrWhiteSpace())
+                {
+                    startInfo.Arguments = this.Arguments;
+                }
 
                 using (var process = Process.Start(startInfo))
                 {
@@ -76,14 +104,9 @@ namespace InputLayer.Common.Models.Actions
                     _logger.Info($"Exit code: {process.ExitCode}");
                     _logger.Info($"Timeout: {!exited}");
 
-                    if (!string.IsNullOrEmpty(output))
-                    {
-                        _logger.Info($"Process output: {output}");
-                    }
-                    else
-                    {
-                        _logger.Info("Process output: [no output]");
-                    }
+                    _logger.Info(!string.IsNullOrEmpty(output)
+                                     ? $"Process output: {output}"
+                                     : "Process output: [no output]");
 
                     if (!string.IsNullOrEmpty(error))
                     {
@@ -107,6 +130,7 @@ namespace InputLayer.Common.Models.Actions
         }
 
         /// <inheritdoc/>
-        public override string ToString() => $"Execute: {this.FileName} {this.Arguments}";
+        public override string ToString()
+            => $"Execute: {this.FileName} {this.Arguments}";
     }
 }

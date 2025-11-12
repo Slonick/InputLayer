@@ -11,6 +11,7 @@ using InputLayer.Common.Logging;
 using InputLayer.Common.Services;
 using InputLayer.IPC;
 using InputLayer.IPC.Models;
+using InputLayer.Models;
 using Timer = System.Timers.Timer;
 
 namespace InputLayer.Services
@@ -26,21 +27,27 @@ namespace InputLayer.Services
         private readonly ILogger _logger = LogManager.Default.GetCurrentClassLogger();
         private readonly Dictionary<ControllerInput, Timer> _longPressTimers = new Dictionary<ControllerInput, Timer>();
         private readonly HashSet<ControllerInput> _pressedButtons = new HashSet<ControllerInput>();
+        private readonly InputLayerSettings _settings;
         private readonly Dictionary<ControllerInput, Timer> _singlePressTimers = new Dictionary<ControllerInput, Timer>();
 
         private bool _combinationMode;
         private bool _isRunning;
 
-        public ControllerService()
+        public ControllerService(InputLayerSettings settings)
         {
+            _settings = settings;
+
             _ipcClient = new IPCClient();
             _ipcClient.MessageReceived += this.OnMessageReceived;
             _ipcClient.Disconnected += this.OnDisconnected;
         }
 
         public event Action<IReadOnlyList<ControllerInput>> ButtonCombinationPressed;
+
         public event Action<IReadOnlyList<ControllerInput>> ButtonCombinationReleased;
+
         public event Action<ControllerInput> ButtonPressed;
+
         public event Action<ControllerInput> ButtonReleased;
 
         public void Dispose()
@@ -110,7 +117,9 @@ namespace InputLayer.Services
                 _pressedButtons.Add(button);
                 _logger.Debug($"Buttons state: {string.Join(" | ", _pressedButtons)} ({_pressedButtons.Count})");
 
-                if (_pressedButtons.Count == 1)
+                var mainButtonPressed = _pressedButtons.Contains(_settings.MainButton);
+
+                if (_pressedButtons.Count == 1 || (_pressedButtons.Count > 1 && !mainButtonPressed))
                 {
                     this.StartSinglePressTimer(button);
                     this.StartLongPressTimer(button);
@@ -138,6 +147,7 @@ namespace InputLayer.Services
             lock (_buttonLock)
             {
                 _logger.Debug($"Button released: {button}");
+                var wasPressed = _pressedButtons.Contains(button);
                 _pressedButtons.Remove(button);
                 _logger.Debug($"Buttons state: {string.Join(" | ", _pressedButtons)}");
 
@@ -155,6 +165,11 @@ namespace InputLayer.Services
                 }
                 else
                 {
+                    if (wasPressed)
+                    {
+                        this.ButtonPressed?.Invoke(button);
+                    }
+
                     this.ButtonReleased?.Invoke(button);
                 }
             }
@@ -164,6 +179,7 @@ namespace InputLayer.Services
         {
             if (_isRunning)
             {
+                _isRunning = false;
                 _logger.Info("IPC connection lost, attempting to restart...");
                 this.Initialize();
             }
@@ -185,7 +201,7 @@ namespace InputLayer.Services
             }
         }
 
-        private void OnMessageReceived(IIPCMessage message)
+        private void OnMessageReceived(IPCMessage message)
         {
             switch (message)
             {
@@ -227,6 +243,8 @@ namespace InputLayer.Services
 
         private void StartAgent()
         {
+            Process agentProcess = null;
+
             try
             {
                 if (!File.Exists(PathConstants.AgentFile))
@@ -244,12 +262,45 @@ namespace InputLayer.Services
                     #endif
                 };
 
-                Process.Start(startInfo);
-                _logger.Info("Agent started");
+                agentProcess = Process.Start(startInfo);
+
+                if (agentProcess == null)
+                {
+                    _logger.Error("Failed to start agent: Process.Start returned null");
+                    return;
+                }
+
+                _logger.Info($"Agent started successfully. Process ID: {agentProcess.Id}");
+
+                agentProcess.EnableRaisingEvents = true;
+                agentProcess.Exited += (sender, args) =>
+                {
+                    if (!(sender is Process process))
+                    {
+                        return;
+                    }
+
+                    var exitCode = process.ExitCode;
+                    var exitTime = process.ExitTime;
+                    var startTime = process.StartTime;
+                    var runtime = exitTime - startTime;
+
+                    if (exitCode != 0)
+                    {
+                        _logger.Error($"Agent crashed with exit code {exitCode}. Runtime: {runtime.TotalSeconds:F2}s");
+                    }
+                    else
+                    {
+                        _logger.Info($"Agent exited normally with code {exitCode}. Runtime: {runtime.TotalSeconds:F2}s");
+                    }
+
+                    process.Dispose();
+                };
             }
             catch (Exception e)
             {
-                _logger.Error(e, "Error starting agent");
+                _logger.Error(e, $"Error starting agent from path: {PathConstants.AgentFile}");
+                agentProcess?.Dispose();
             }
         }
 

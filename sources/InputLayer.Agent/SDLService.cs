@@ -47,8 +47,11 @@ namespace InputLayer.Agent
         }
 
         public event Action<ControllerInput> ButtonPressed;
+
         public event Action<ControllerInput> ButtonReleased;
+
         public event Action ControllerConnected;
+
         public event Action ControllerDisconnected;
 
         public void Dispose()
@@ -192,7 +195,7 @@ namespace InputLayer.Agent
                 }
 
                 var joystickId = SDL_GameControllerGetJoystick(controllerId);
-                var controller = new Controller(controllerId, joystickId, SDL_JoystickInstanceID(joystickId), SDL_JoystickName(joystickId));
+                var controller = new Controller(controllerId, SDL_JoystickInstanceID(joystickId), SDL_JoystickName(joystickId));
 
                 _controllers.Add(controller);
 

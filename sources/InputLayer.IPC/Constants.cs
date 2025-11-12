@@ -2,6 +2,6 @@
 {
     internal static class Constants
     {
-        internal const string Name = "InputLayer.Pipe";
+        internal const string Name = "InputLayer.IPC";
     }
 }

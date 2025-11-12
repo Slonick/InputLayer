@@ -34,11 +34,10 @@ namespace InputLayer.Common.Logging
             }
         }
 
-        public ILogger GetCurrentClassLogger() => _logFactory.GetLogger(StackTraceUtils.GetClassFullName());
+        public ILogger GetCurrentClassLogger()
+            => _logFactory.GetLogger(StackTraceUtils.GetClassFullName());
 
         public void SetConfig(LoggerConfig loggerConfig)
-        {
-            _logFactory.Config = loggerConfig;
-        }
+            => _logFactory.Config = loggerConfig;
     }
 }

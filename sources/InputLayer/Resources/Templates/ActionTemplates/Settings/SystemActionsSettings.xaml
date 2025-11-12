@@ -1,0 +1,32 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:actions="clr-namespace:InputLayer.Common.Models.Actions;assembly=InputLayer.Common"
+                    xmlns:converters="clr-namespace:InputLayer.Converters"
+                    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                    xmlns:me="clr-namespace:InputLayer.MarkupExtensions"
+                    xmlns:templateSelectors="clr-namespace:InputLayer.TemplateSelectors"
+                    mc:Ignorable="d">
+
+    <DataTemplate x:Key="SystemActionPauseSettings" DataType="{x:Type actions:SystemAction}">
+        <HeaderedContentControl Foreground="{DynamicResource TextBrush}">
+            <HeaderedContentControl.Header>
+                <MultiBinding Converter="{converters:StringFormatConverter}">
+                    <me:LocalizationBinding Key="InputLayer.SystemAction.Pause.Settings.Duration" />
+                    <Binding Path="Settings.Timeout" />
+                </MultiBinding>
+            </HeaderedContentControl.Header>
+
+            <Slider IsSnapToTickEnabled="True"
+                    Maximum="5000"
+                    Minimum="100"
+                    TickFrequency="100"
+                    TickPlacement="BottomRight"
+                    Value="{Binding Settings.Timeout}" />
+
+        </HeaderedContentControl>
+    </DataTemplate>
+
+    <templateSelectors:SystemActionSettingsSelector x:Key="SystemActionSettingsSelector" PauseTemplate="{StaticResource SystemActionPauseSettings}" />
+
+</ResourceDictionary>
