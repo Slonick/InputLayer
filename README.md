@@ -2,6 +2,9 @@
 **InputLayer** is a [Playnite](https://playnite.link/) plugin that enhances your gamepad experience with advanced
 keyboard input management capabilities for Windows.
 
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/Slonick/InputLayer/.github%2Fworkflows%2Frelease.yml?style=for-the-badge)
+![GitHub Downloads (specific asset, latest release)](https://img.shields.io/github/downloads/Slonick/InputLayer/latest/InputLayer.pext?displayAssetName=false&style=for-the-badge&label=Downloads&link=https%3A%2F%2Fgithub.com%2FSlonick%2FInputLayer%2Freleases%2Flatest%2Fdownload%2FInputLayer.pext)
+
 ## ✨ Features
 - **Controller Button Remapping**: Map gamepad buttons to keyboard keys for enhanced control
 - **Customizable Actions**: Create custom button-to-key bindings for any controller button
