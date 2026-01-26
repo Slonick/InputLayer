@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using InputLayer.Common.Serialization;
 using InputLayer.Mappers;
 using InputLayer.Models;
 using InputLayer.Settings;
@@ -14,14 +13,12 @@ namespace InputLayer.Services
     public class SettingsManager
     {
         private readonly string _configFilepath;
-        private readonly string _legacyConfigFilepath;
         private readonly ILogger _logger = LogManager.Default.GetCurrentClassLogger();
         private readonly SettingsService<InputLayerSettingsData, InputLayerSettings> _settingsService;
 
         public SettingsManager(Plugin plugin)
         {
             _configFilepath = Path.Combine(plugin.GetPluginUserDataPath(), "config.xml");
-            _legacyConfigFilepath = Path.Combine(plugin.GetPluginUserDataPath(), "config.json");
 
             var options = new SettingsServiceOptions
             {
@@ -38,26 +35,6 @@ namespace InputLayer.Services
 
         public InputLayerSettings LoadPluginSettings()
         {
-            if (File.Exists(_legacyConfigFilepath))
-            {
-                try
-                {
-                    _logger.Info("Legacy config file found, migrating...");
-                    var fileContent = File.ReadAllText(_legacyConfigFilepath);
-                    var settings = Serializer.Deserialize<InputLayerSettings>(fileContent);
-                    this.SavePluginSettings(settings);
-                    return settings;
-                }
-                catch (Exception e)
-                {
-                    _logger.Error(e, "Failed to load plugin settings");
-                }
-                finally
-                {
-                    File.Delete(_legacyConfigFilepath);
-                }
-            }
-
             if (File.Exists(_configFilepath))
             {
                 try
