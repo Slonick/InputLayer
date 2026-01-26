@@ -124,7 +124,7 @@ namespace InputLayer
                 _logger.Debug("Game is running. Using in-game actions.");
             }
 
-            var button = combination.ExceptButtons(_settings.MainButton).Single();
+            var button = combination.ExceptButtons(_settings.MainButton).Last();
             _logger.Debug($"Button: {button}");
 
             var controllerAction = source.SingleOrDefault(x => x.Button == button);
