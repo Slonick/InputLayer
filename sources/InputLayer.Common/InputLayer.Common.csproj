@@ -92,7 +92,7 @@
         <Reference Include="System"/>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="PlayniteSDK" Version="6.13.0" />
+        <PackageReference Include="PlayniteSDK" Version="6.15.0" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\InputLayer.Keyboard\InputLayer.Keyboard.csproj">
