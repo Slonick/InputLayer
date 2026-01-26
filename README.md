@@ -48,11 +48,6 @@ If you're using button combinations in your games (especially combinations invol
 - **Controller companion apps**: Applications like DS4Windows, reWASD, or other controller mapping software may conflict with InputLayer. Consider disabling them or adjusting their settings to avoid double-mapping.
 
 If your button combinations aren't working as expected, check whether any other software is intercepting the same buttons. You may need to disable or adjust those applications for InputLayer to function properly.
-### Project Structure
-
-## 📝 Changelog
-### Version 0.1.0
-- Initial release
 
 ## 🐛 Support
 For issues, questions, or contributions:
