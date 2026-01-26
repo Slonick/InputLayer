@@ -6,5 +6,5 @@ using System.Reflection;
 [assembly: AssemblyProduct(nameof(InputLayer))]
 [assembly: AssemblyCopyright("Copyright © Slonick 2025")]
 
-[assembly: AssemblyVersion("0.2.0.0")]
-[assembly: AssemblyFileVersion("0.2.0.0")]
+[assembly: AssemblyVersion("0.3.0.0")]
+[assembly: AssemblyFileVersion("0.3.0.0")]

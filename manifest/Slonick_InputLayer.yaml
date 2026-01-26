@@ -1,5 +1,12 @@
 ﻿AddonId: "InputLayer"
 Packages:
+  - Version: 0.3
+    RequiredApiVersion: 6.0.0
+    ReleaseDate: 2026-01-26
+    PackageUrl: https://github.com/Slonick/InputLayer/releases/download/v0.3/InputLayer.pext
+    Changelog:
+      - "Fixed crash that could occur when pressing different buttons frequently"
+      - "Removed support for legacy settings"
   - Version: 0.2
     RequiredApiVersion: 6.0.0
     ReleaseDate: 2025-11-12
