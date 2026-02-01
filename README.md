@@ -1,3 +1,12 @@
+> ⚠️ **Project Status: Discontinued**
+>
+> This plugin is **no longer maintained**.
+>
+> I’ve decided to step away from Playnite entirely after long-term frustration with the ecosystem of frequently broken and unstable plugins.  
+> As a result, **InputLayer will not receive further updates, bug fixes, or support**.
+>
+> The repository remains available for reference or for anyone who wishes to fork and continue development.
+
 # 🎮 InputLayer (Playnite Plugin)
 **InputLayer** is a [Playnite](https://playnite.link/) plugin that enhances your gamepad experience with advanced
 keyboard input management capabilities for Windows.
